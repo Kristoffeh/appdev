@@ -1,0 +1,34 @@
+﻿<Window x:Class="appdev.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:appdev" xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
+        mc:Ignorable="d"
+        Title="App Development" Height="795" Width="385" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Grid>
+
+        <Menu IsMainMenu="True">
+            <MenuItem Header="Options" FontSize="15" >
+                <MenuItem Header="Display" FontSize="15" >
+                    <MenuItem Header="iPhone X" FontSize="15" ></MenuItem>
+                    <MenuItem Header="Samsung S9" FontSize="15" ></MenuItem>
+                    <MenuItem Header="Samsung S10" FontSize="15" ></MenuItem>
+                    <MenuItem Header="Samsung S10+" FontSize="15" ></MenuItem>
+                    <MenuItem Header="Huawei P30" FontSize="15" ></MenuItem>
+                </MenuItem>
+
+                <MenuItem Header="Settings" FontSize="15" >
+
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Other" FontSize="15" >
+                <MenuItem Header="Refresh Page" FontSize="15" ></MenuItem>
+            </MenuItem>
+        </Menu>
+        <wpf:ChromiumWebBrowser x:Name="webBrowser" Margin="0 25 0 25" Address="http://admintu.com/start"/>
+        <Label Name="lblVersion" Content="v1.0" FontSize="13" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+
+
+    </Grid>
+</Window>
