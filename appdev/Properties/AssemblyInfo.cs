@@ -10,7 +10,7 @@ using System.Windows;
 [assembly: AssemblyTitle("appdev")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Kristoffer")]
 [assembly: AssemblyProduct("appdev")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
@@ -51,5 +51,5 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.15.0")]
-[assembly: AssemblyFileVersion("2.1.15.0")]
+[assembly: AssemblyVersion("5.2.5.0")]
+[assembly: AssemblyFileVersion("5.2.5.0")]

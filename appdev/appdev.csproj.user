@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PublishUrlHistory>C:\xampp\htdocs\install\|\\127.0.0.1\Autoupdate\|C:\xampp\htdocs\Autoupdate\|ftp://171.22.152.50/Autoupdate/|ftp://171.22.152.50/autoupdate/</PublishUrlHistory>
+    <InstallUrlHistory>\\127.0.0.1\install\|http://171.22.152.50/Autoupdate/install/|\\127.0.0.1\Autoupdate\install\</InstallUrlHistory>
+    <SupportUrlHistory />
+    <UpdateUrlHistory>http://171.22.152.50/Autoupdate/</UpdateUrlHistory>
+    <BootstrapperUrlHistory />
+    <ErrorReportUrlHistory />
+    <FallbackCulture>en-US</FallbackCulture>
+    <VerifyUploadedFiles>false</VerifyUploadedFiles>
+  </PropertyGroup>
+  <PropertyGroup>
+    <EnableSecurityDebugging>false</EnableSecurityDebugging>
+  </PropertyGroup>
+</Project>

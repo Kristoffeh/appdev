@@ -5,28 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:appdev" xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
-        Title="App Development" Height="795" Width="385" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="App Development" Width="375" Height="812" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
 
         <Menu IsMainMenu="True">
             <MenuItem Header="Options" FontSize="15" >
                 <MenuItem Header="Display" FontSize="15" >
-                    <MenuItem Header="iPhone X" FontSize="15" ></MenuItem>
-                    <MenuItem Header="Samsung S9" FontSize="15" ></MenuItem>
-                    <MenuItem Header="Samsung S10" FontSize="15" ></MenuItem>
-                    <MenuItem Header="Samsung S10+" FontSize="15" ></MenuItem>
-                    <MenuItem Header="Huawei P30" FontSize="15" ></MenuItem>
+                    <MenuItem Name="iphonex" Header="Apple iPhone X" Click="iphonex_Click" FontSize="15" ></MenuItem>
+                    <MenuItem Name="iPhone11" Header="Apple iPhone 11" Click="iphone11_Click" FontSize="15" ></MenuItem>
+                    <MenuItem Name="samsungs9" Header="Samsung S9" Click="samsungs9_Click" FontSize="15" ></MenuItem>
+                    <MenuItem Name="samsungs10" Header="Samsung S10" Click="samsungs10_Click" FontSize="15" ></MenuItem>
+                    <MenuItem Name="huaweip30" Header="Huawei P30" Click="huaweip30_Click" FontSize="15" ></MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="Settings" FontSize="15" >
-
-                </MenuItem>
+                <MenuItem Header="Settings" FontSize="15" ></MenuItem>
             </MenuItem>
             <MenuItem Header="Other" FontSize="15" >
                 <MenuItem Header="Refresh Page" FontSize="15" ></MenuItem>
             </MenuItem>
         </Menu>
-        <wpf:ChromiumWebBrowser x:Name="webBrowser" Margin="0 25 0 25" Address="http://admintu.com/start"/>
+        <wpf:ChromiumWebBrowser x:Name="webBrowser" Margin="0 25 0 25" Address="http://admintu.com/start" />
         <Label Name="lblVersion" Content="v1.0" FontSize="13" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
 
 
