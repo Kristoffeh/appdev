@@ -98,3 +98,15 @@ C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.csproj.CoreComp
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.csproj.CopyComplete
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.exe
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.pdb
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\Newtonsoft.Json.dll
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.Internal.dll
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.UpdateInstaller.Client.GuiInterface.dll
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.WPFUserInterface.dll
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.Internal.pdb
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.Internal.xml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.Internal.dll.config
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.UpdateInstaller.Client.GuiInterface.pdb
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.WPFUserInterface.pdb
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.WPFUserInterface.dll.config
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UserSettings.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UserSettings.baml

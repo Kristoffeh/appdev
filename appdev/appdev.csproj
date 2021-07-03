@@ -37,7 +37,7 @@
     <MinimumRequiredVersion>3.0.1.0</MinimumRequiredVersion>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>25</ApplicationRevision>
-    <ApplicationVersion>5.2.5.%2a</ApplicationVersion>
+    <ApplicationVersion>5.2.5.25</ApplicationVersion>
     <UseApplicationTrust>true</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -64,10 +64,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <DelaySign>false</DelaySign>
@@ -87,6 +87,9 @@
   <PropertyGroup>
     <ManifestKeyFile>file.pfx</ManifestKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>1_Wyp_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CefSharp, Version=91.1.211.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>packages\CefSharp.Common.91.1.211\lib\net452\CefSharp.dll</HintPath>
@@ -96,6 +99,18 @@
     </Reference>
     <Reference Include="CefSharp.Wpf, Version=91.1.211.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>packages\CefSharp.Wpf.91.1.211\lib\net452\CefSharp.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\Desktop\dll wpfuserint\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="nUpdate.Internal">
+      <HintPath>..\..\..\..\Desktop\dll wpfuserint\nUpdate.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="nUpdate.UpdateInstaller.Client.GuiInterface">
+      <HintPath>..\..\..\..\Desktop\dll wpfuserint\nUpdate.UpdateInstaller.Client.GuiInterface.dll</HintPath>
+    </Reference>
+    <Reference Include="nUpdate.WPFUserInterface">
+      <HintPath>..\..\..\..\Desktop\dll wpfuserint\nUpdate.WPFUserInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -117,6 +132,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserSettings.xaml.cs">
+      <DependentUpon>UserSettings.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -129,6 +147,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserSettings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -171,6 +193,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="1_Wyp_icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
