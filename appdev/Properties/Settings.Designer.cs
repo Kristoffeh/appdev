@@ -34,5 +34,41 @@ namespace appdev.Properties {
                 this["setURL"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string selectedPreset {
+            get {
+                return ((string)(this["selectedPreset"]));
+            }
+            set {
+                this["selectedPreset"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("360")]
+        public int selectedSizeWidth {
+            get {
+                return ((int)(this["selectedSizeWidth"]));
+            }
+            set {
+                this["selectedSizeWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("715")]
+        public int selectedSizeHeight {
+            get {
+                return ((int)(this["selectedSizeHeight"]));
+            }
+            set {
+                this["selectedSizeHeight"] = value;
+            }
+        }
     }
 }

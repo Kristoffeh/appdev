@@ -100,17 +100,21 @@
     <Reference Include="CefSharp.Wpf, Version=91.1.211.0, Culture=neutral, PublicKeyToken=40c4b6fc221f4138, processorArchitecture=MSIL">
       <HintPath>packages\CefSharp.Wpf.91.1.211\lib\net452\CefSharp.Wpf.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\Desktop\dll wpfuserint\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\nUpdate-master\nUpdate.WPFUserInterface\bin\Debug\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="nUpdate.Internal">
-      <HintPath>..\..\..\..\Desktop\dll wpfuserint\nUpdate.Internal.dll</HintPath>
+    <Reference Include="nUpdate.Internal, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\nUpdate-master\nUpdate.WPFUserInterface\bin\Debug\nUpdate.Internal.dll</HintPath>
     </Reference>
-    <Reference Include="nUpdate.UpdateInstaller.Client.GuiInterface">
-      <HintPath>..\..\..\..\Desktop\dll wpfuserint\nUpdate.UpdateInstaller.Client.GuiInterface.dll</HintPath>
+    <Reference Include="nUpdate.UpdateInstaller.Client.GuiInterface, Version=3.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\nUpdate-master\nUpdate.WPFUserInterface\bin\Debug\nUpdate.UpdateInstaller.Client.GuiInterface.dll</HintPath>
     </Reference>
-    <Reference Include="nUpdate.WPFUserInterface">
-      <HintPath>..\..\..\..\Desktop\dll wpfuserint\nUpdate.WPFUserInterface.dll</HintPath>
+    <Reference Include="nUpdate.WPFUserInterface, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Desktop\nUpdate-master\nUpdate.WPFUserInterface\bin\Debug\nUpdate.WPFUserInterface.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />

@@ -36,13 +36,18 @@ namespace appdev
             this.Close();
         }
 
-        private void btnSettingsApply_Click(object sender, RoutedEventArgs e)
+        public void saveAllSettings()
         {
             // Apply user settings
             Properties.Settings.Default.setURL = url_preview.Text;
 
             // Save settings
             Properties.Settings.Default.Save();
+        }
+
+        private void btnSettingsApply_Click(object sender, RoutedEventArgs e)
+        {
+            saveAllSettings();
 
             // Disable apply button for feedback
             btnSettingsApply.IsEnabled = false;
@@ -58,7 +63,15 @@ namespace appdev
 
         private void url_preview_KeyDown(object sender, KeyEventArgs e)
         {
+            // Allow user to save changes after making changes.
             btnSettingsApply.IsEnabled = true;
+
+            if (e.Key == Key.Enter)
+            {
+                // Save changes by pressing ENTER.
+                saveAllSettings();
+                btnSettingsApply.IsEnabled = false;
+            }
         }
     }
 }

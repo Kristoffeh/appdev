@@ -27,6 +27,7 @@ namespace appdev
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region - Variables -
         const int default_width = 375;
 
         const int height_iphonex = 862;
@@ -42,6 +43,19 @@ namespace appdev
 
         const int width_p30 = 360;
         const int height_p30 = 830;
+
+        string Preset_iPhoneX = "iPhoneX";
+        string Preset_Samsung9 = "Samsung9";
+        string Preset_Samsung10 = "Samsung10";
+        string Preset_iPhone11 = "iPhone11";
+        string Preset_HuaweiP30 = "HuaweiP30";
+
+        int[] size_iPhoneX = new int[] { 375, 862 };
+        int[] size_Samsung9 = new int[] { 360, 715 };
+        int[] size_Samsung10 = new int[] { 360, 715 };
+        int[] size_iPhone11 = new int[] { 375, 715 };
+        int[] size_HuaweiP30 = new int[] { 375, 715 };
+        #endregion
 
         // int activeDisplay = 0;
 
@@ -59,6 +73,21 @@ namespace appdev
             updaterUI.ShowUserInterface();
 
             webBrowser.Address = Properties.Settings.Default.setURL;
+
+            // MessageBox.Show("Selected Preset = " + Properties.Settings.Default.selectedPreset ,"DEBUG_MODE ACTIVE");
+            // MessageBox.Show("Selected Size = " + Properties.Settings.Default.selectedSizeWidth + "x" + Properties.Settings.Default.selectedSizeHeight , "DEBUG_MODE ACTIVE");
+            // Load last used preset
+            // width x height
+            Width = Properties.Settings.Default.selectedSizeWidth;
+            Height = Properties.Settings.Default.selectedSizeHeight;
+
+            var prst = Properties.Settings.Default.selectedPreset;
+
+            if (prst == Preset_iPhoneX) { iphonex.IsChecked = true; }
+            if (prst == Preset_Samsung9) { samsungs9.IsChecked = true; }
+            if (prst == Preset_Samsung10) { samsungs10.IsChecked = true; }
+            if (prst == Preset_iPhone11) { iPhone11.IsChecked = true; }
+            if (prst == Preset_HuaweiP30) { huaweip30.IsChecked = true; }
         }
 
         public void uncheckDisplays()
@@ -75,11 +104,18 @@ namespace appdev
         {
             uncheckDisplays();
 
-            Width = default_width;
-            Height = height_iphonex;
+            Width = size_iPhoneX[0];
+            Height = size_iPhoneX[1];
 
             // set as checked
             iphonex.IsChecked = true;
+            
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_iPhoneX;
+            Properties.Settings.Default.selectedSizeWidth = size_iPhoneX[0];
+            Properties.Settings.Default.selectedSizeHeight= size_iPhoneX[1];
+            Properties.Settings.Default.Save();
 
         }
 
@@ -87,42 +123,66 @@ namespace appdev
         {
             uncheckDisplays();
 
-            Width = width_samsungs9;
-            Height = height_samsungs9;
+            Width = size_Samsung9[0];
+            Height = size_Samsung9[1];
 
             // set as checked
             samsungs9.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_Samsung9;
+            Properties.Settings.Default.selectedSizeWidth = size_Samsung9[0];
+            Properties.Settings.Default.selectedSizeHeight = size_Samsung9[1];
+            Properties.Settings.Default.Save();
         }
 
         private void samsungs10_Click(object sender, RoutedEventArgs e)
         {
-            Width = width_samsungs10;
-            Height = height_samsungs10;
+            Width = size_Samsung10[0];
+            Height = size_Samsung10[1];
 
             // set as checked
             samsungs10.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_Samsung10;
+            Properties.Settings.Default.selectedSizeWidth = size_Samsung10[0];
+            Properties.Settings.Default.selectedSizeHeight = size_Samsung10[1];
+            Properties.Settings.Default.Save();
         }
 
         private void iphone11_Click(object sender, RoutedEventArgs e)
         {
             uncheckDisplays();
 
-            Width = width_iphone11;
-            Height = height_iphone11;
+            Width = size_iPhone11[0];
+            Height = size_iPhone11[1];
 
             // set as checked
             iPhone11.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_iPhone11;
+            Properties.Settings.Default.selectedSizeWidth = size_iPhone11[0];
+            Properties.Settings.Default.selectedSizeHeight = size_iPhone11[1];
+            Properties.Settings.Default.Save();
         }
 
         private void huaweip30_Click(object sender, RoutedEventArgs e)
         {
             uncheckDisplays();
 
-            Width = width_p30;
-            Height = height_p30;
+            Width = size_HuaweiP30[0];
+            Height = size_HuaweiP30[1];
 
             // set as checked
             huaweip30.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_HuaweiP30;
+            Properties.Settings.Default.selectedSizeWidth = size_HuaweiP30[0];
+            Properties.Settings.Default.selectedSizeHeight = size_HuaweiP30[1];
+            Properties.Settings.Default.Save();
         }
         #endregion
 

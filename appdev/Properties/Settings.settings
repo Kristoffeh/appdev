@@ -5,5 +5,14 @@
     <Setting Name="setURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">google.com</Value>
     </Setting>
+    <Setting Name="selectedPreset" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="selectedSizeWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">360</Value>
+    </Setting>
+    <Setting Name="selectedSizeHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">715</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
