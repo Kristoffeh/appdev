@@ -47,5 +47,18 @@ namespace appdev
             // Disable apply button for feedback
             btnSettingsApply.IsEnabled = false;
         }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void url_preview_KeyDown(object sender, KeyEventArgs e)
+        {
+            btnSettingsApply.IsEnabled = true;
+        }
     }
 }
