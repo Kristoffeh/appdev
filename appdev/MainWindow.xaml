@@ -8,23 +8,25 @@
         Title="App Development" Width="375" Height="812" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
 
-        <Menu IsMainMenu="True">
-            <MenuItem Header="Options" FontSize="15" >
-                <MenuItem Header="Display" FontSize="15" >
-                    <MenuItem Name="iphonex" Header="Apple iPhone X" Click="iphonex_Click" FontSize="15" ></MenuItem>
-                    <MenuItem Name="iPhone11" Header="Apple iPhone 11" Click="iphone11_Click" FontSize="15" ></MenuItem>
-                    <MenuItem Name="samsungs9" Header="Samsung S9" Click="samsungs9_Click" FontSize="15" ></MenuItem>
-                    <MenuItem Name="samsungs10" Header="Samsung S10" Click="samsungs10_Click" FontSize="15" ></MenuItem>
-                    <MenuItem Name="huaweip30" Header="Huawei P30" Click="huaweip30_Click" FontSize="15" ></MenuItem>
-                </MenuItem>
+        <DockPanel>
+            <Menu IsMainMenu="True" Name="topMenu" DockPanel.Dock="Top">
+                <MenuItem Header="Options" FontSize="15" >
+                    <MenuItem Header="Display" FontSize="15" >
+                        <MenuItem Name="iphonex" Header="Apple iPhone X" Click="iphonex_Click" FontSize="15"  IsCheckable="True" ></MenuItem>
+                        <MenuItem Name="iPhone11" Header="Apple iPhone 11" Click="iphone11_Click" FontSize="15" ></MenuItem>
+                        <MenuItem Name="samsungs9" Header="Samsung S9" Click="samsungs9_Click" FontSize="15" ></MenuItem>
+                        <MenuItem Name="samsungs10" Header="Samsung S10" Click="samsungs10_Click" FontSize="15" ></MenuItem>
+                        <MenuItem Name="huaweip30" Header="Huawei P30" Click="huaweip30_Click" FontSize="15" ></MenuItem>
+                    </MenuItem>
 
-                <MenuItem Name="open_settings" Header="Settings" FontSize="15" Click="open_settings_Click" ></MenuItem>
-            </MenuItem>
-            <MenuItem Header="Other" FontSize="15" >
-                <MenuItem Name="refreshpage" Header="Refresh Page" FontSize="15" Click="refreshpage_Click" ></MenuItem>
-                <MenuItem Name="about" Header="About" FontSize="15" Click="about_Click" ></MenuItem>
-            </MenuItem>
-        </Menu>
+                    <MenuItem Name="open_settings" Header="Settings" FontSize="15" Click="open_settings_Click" ></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Other" FontSize="15" >
+                    <MenuItem Name="refreshpage" Header="Refresh Page" FontSize="15" Click="refreshpage_Click" ></MenuItem>
+                    <MenuItem Name="about" Header="About" FontSize="15" Click="about_Click" ></MenuItem>
+                </MenuItem>
+            </Menu>
+        </DockPanel>
         <wpf:ChromiumWebBrowser x:Name="webBrowser" Margin="0 25 0 0" />
 
 

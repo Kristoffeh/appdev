@@ -43,6 +43,8 @@ namespace appdev
         const int width_p30 = 360;
         const int height_p30 = 830;
 
+        // int activeDisplay = 0;
+
 
         public MainWindow()
         {
@@ -59,38 +61,68 @@ namespace appdev
             webBrowser.Address = Properties.Settings.Default.setURL;
         }
 
-
-
+        public void uncheckDisplays()
+        {
+            iphonex.IsChecked = false;
+            samsungs9.IsChecked = false;
+            samsungs10.IsChecked = false;
+            iPhone11.IsChecked = false;
+            huaweip30.IsChecked = false;
+        }
 
         #region ' Phone Sizes '
         private void iphonex_Click(object sender, RoutedEventArgs e)
         {
+            uncheckDisplays();
+
             Width = default_width;
             Height = height_iphonex;
+
+            // set as checked
+            iphonex.IsChecked = true;
+
         }
 
         private void samsungs9_Click(object sender, RoutedEventArgs e)
         {
+            uncheckDisplays();
+
             Width = width_samsungs9;
             Height = height_samsungs9;
+
+            // set as checked
+            samsungs9.IsChecked = true;
         }
 
         private void samsungs10_Click(object sender, RoutedEventArgs e)
         {
             Width = width_samsungs10;
             Height = height_samsungs10;
+
+            // set as checked
+            samsungs10.IsChecked = true;
         }
 
         private void iphone11_Click(object sender, RoutedEventArgs e)
         {
+            uncheckDisplays();
+
             Width = width_iphone11;
             Height = height_iphone11;
+
+            // set as checked
+            iPhone11.IsChecked = true;
         }
 
         private void huaweip30_Click(object sender, RoutedEventArgs e)
         {
+            uncheckDisplays();
+
             Width = width_p30;
             Height = height_p30;
+
+            // set as checked
+            huaweip30.IsChecked = true;
         }
         #endregion
 

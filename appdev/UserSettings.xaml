@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:appdev"
         mc:Ignorable="d"
-        Title="Settings" Height="500" Width="450"
+        Title="Settings" Height="550" Width="450"
         Loaded="Window_Loaded" ResizeMode="NoResize" WindowStyle="SingleBorderWindow" KeyDown="Window_KeyDown">
     
     <Grid Margin="15">
@@ -34,7 +34,7 @@
         <StackPanel VerticalAlignment="Top" Grid.Row="2">
             <Label FontSize="16" Content="Preferred Preset" />
             <Label FontSize="13" Content="Please specify your preferred preset when loading up the app." />
-            
+            <Label FontSize="13" Content="Please use the menu at the top!" Foreground="#FF858585" />
         </StackPanel>
 
         <StackPanel VerticalAlignment="Top" Grid.Row="3">
