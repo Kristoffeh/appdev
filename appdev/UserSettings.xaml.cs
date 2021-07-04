@@ -28,6 +28,7 @@ namespace appdev
         {
             // Load user settings
             url_preview.Text = Properties.Settings.Default.setURL;
+            toggleResizing.IsChecked = Properties.Settings.Default.toggleResizing;
         }
 
         private void btnSettingsCancel_Click(object sender, RoutedEventArgs e)
@@ -40,6 +41,9 @@ namespace appdev
         {
             // Apply user settings
             Properties.Settings.Default.setURL = url_preview.Text;
+            Properties.Settings.Default.toggleResizing = toggleResizing.IsChecked.Value;
+
+
 
             // Save settings
             Properties.Settings.Default.Save();
@@ -72,6 +76,11 @@ namespace appdev
                 saveAllSettings();
                 btnSettingsApply.IsEnabled = false;
             }
+        }
+
+        private void toggleResizing_Click(object sender, RoutedEventArgs e)
+        {
+            btnSettingsApply.IsEnabled = true;
         }
     }
 }

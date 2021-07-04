@@ -70,5 +70,17 @@ namespace appdev.Properties {
                 this["selectedSizeHeight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool toggleResizing {
+            get {
+                return ((bool)(this["toggleResizing"]));
+            }
+            set {
+                this["toggleResizing"] = value;
+            }
+        }
     }
 }

@@ -26,15 +26,17 @@
         </StackPanel>
 
         <StackPanel VerticalAlignment="Top" Grid.Row="1">
-            <Label FontSize="16" Content="Website Preview URL" />
-            <Label FontSize="13" Content="Changing this value requires a restart of the app." />
+            <Label FontSize="16" Content="Website Preview URL" Padding="5 0 0 0" />
+            <Label FontSize="13" Content="Changing this value requires a restart of the app." Padding="5 0 0 13" />
             <TextBox x:Name="url_preview" Text="www.google.com" TabIndex="0" FontSize="14" Margin="5 0 0 0" KeyDown="url_preview_KeyDown"/>
         </StackPanel>
 
         <StackPanel VerticalAlignment="Top" Grid.Row="2">
-            <Label FontSize="16" Content="Preferred Preset" />
-            <Label FontSize="13" Content="Please specify your preferred preset when loading up the app." />
-            <Label FontSize="13" Content="Please use the menu at the top!" Foreground="#FF858585" />
+            <Label FontSize="16" Content="Resize Window" Padding="5 0 0 0" />
+            <Label FontSize="13" Content="Toggle resizing for the main window." Padding="5 0 0 13" />
+            <CheckBox x:Name="toggleResizing" Content="Toggle resizing" Margin="5 0 0 0" FontSize="13" Click="toggleResizing_Click" />
+
+
         </StackPanel>
 
         <StackPanel VerticalAlignment="Top" Grid.Row="3">

@@ -11,8 +11,13 @@
         <DockPanel>
             <Menu IsMainMenu="True" Name="topMenu" DockPanel.Dock="Top">
                 <MenuItem Header="Options" FontSize="15" >
-                    <MenuItem Header="Display" FontSize="15" >
-                        <MenuItem Name="iphonex" Header="Apple iPhone X" Click="iphonex_Click" FontSize="15"  IsCheckable="True" ></MenuItem>
+                    <MenuItem Header="Displays" FontSize="15" >
+                        <MenuItem Name="Desktop" Header="Desktop" Click="desktop_Click" FontSize="15" ></MenuItem>
+                        <MenuItem Name="Laptop" Header="Laptop" Click="laptop_Click" FontSize="15" ></MenuItem>
+                        <Separator Margin="0 8 0 5" />
+                        <MenuItem Name="galaxyTab3" Header='Galaxy Tab 3 10.1"' Click="galaxyTab3_Click" FontSize="15" ></MenuItem>
+                        <Separator Margin="0 5 0 8" />
+                        <MenuItem Name="iphonex" Header="Apple iPhone X" Click="iphonex_Click" FontSize="15" ></MenuItem>
                         <MenuItem Name="iPhone11" Header="Apple iPhone 11" Click="iphone11_Click" FontSize="15" ></MenuItem>
                         <MenuItem Name="samsungs9" Header="Samsung S9" Click="samsungs9_Click" FontSize="15" ></MenuItem>
                         <MenuItem Name="samsungs10" Header="Samsung S10" Click="samsungs10_Click" FontSize="15" ></MenuItem>

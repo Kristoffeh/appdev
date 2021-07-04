@@ -28,33 +28,23 @@ namespace appdev
     public partial class MainWindow : Window
     {
         #region - Variables -
-        const int default_width = 375;
-
-        const int height_iphonex = 862;
-
-        const int width_samsungs9 = 360;
-        const int height_samsungs9 = 790;
-
-        const int width_samsungs10 = 360;
-        const int height_samsungs10 = 810;
-
-        const int width_iphone11 = 276;
-        const int height_iphone11 = 648;
-
-        const int width_p30 = 360;
-        const int height_p30 = 830;
-
         string Preset_iPhoneX = "iPhoneX";
         string Preset_Samsung9 = "Samsung9";
         string Preset_Samsung10 = "Samsung10";
         string Preset_iPhone11 = "iPhone11";
         string Preset_HuaweiP30 = "HuaweiP30";
+        string Preset_GalaxyTab3 = "GalaxyTab3";
+        string Preset_Laptop = "Laptop";
+        string Preset_Desktop = "Desktop";
 
         int[] size_iPhoneX = new int[] { 375, 862 };
         int[] size_Samsung9 = new int[] { 360, 715 };
         int[] size_Samsung10 = new int[] { 360, 715 };
         int[] size_iPhone11 = new int[] { 375, 715 };
         int[] size_HuaweiP30 = new int[] { 375, 715 };
+        int[] size_GalaxyTab3 = new int[] { 1280, 800 };
+        int[] size_Laptop = new int[] { 1366, 768 };
+        int[] size_Desktop = new int[] { 1920, 1080 };
         #endregion
 
         // int activeDisplay = 0;
@@ -82,12 +72,25 @@ namespace appdev
             Height = Properties.Settings.Default.selectedSizeHeight;
 
             var prst = Properties.Settings.Default.selectedPreset;
+            var rz = Properties.Settings.Default.toggleResizing;
 
             if (prst == Preset_iPhoneX) { iphonex.IsChecked = true; }
             if (prst == Preset_Samsung9) { samsungs9.IsChecked = true; }
             if (prst == Preset_Samsung10) { samsungs10.IsChecked = true; }
             if (prst == Preset_iPhone11) { iPhone11.IsChecked = true; }
             if (prst == Preset_HuaweiP30) { huaweip30.IsChecked = true; }
+            if (prst == Preset_GalaxyTab3) { galaxyTab3.IsChecked = true; }
+            if (prst == Preset_Laptop) { Laptop.IsChecked = true; }
+            if (prst == Preset_Desktop) { Desktop.IsChecked = true; }
+
+            if (rz == false)
+            {
+                ResizeMode = ResizeMode.NoResize;
+            }
+            else
+            {
+                ResizeMode = ResizeMode.CanResize;
+            }
         }
 
         public void uncheckDisplays()
@@ -97,9 +100,12 @@ namespace appdev
             samsungs10.IsChecked = false;
             iPhone11.IsChecked = false;
             huaweip30.IsChecked = false;
+            galaxyTab3.IsChecked = false;
+            Laptop.IsChecked = false;
+            Desktop.IsChecked = false;
         }
 
-        #region ' Phone Sizes '
+        #region ' Display Sizes '
         private void iphonex_Click(object sender, RoutedEventArgs e)
         {
             uncheckDisplays();
@@ -109,7 +115,6 @@ namespace appdev
 
             // set as checked
             iphonex.IsChecked = true;
-            
 
             // Save as last used preset
             Properties.Settings.Default.selectedPreset = Preset_iPhoneX;
@@ -184,6 +189,58 @@ namespace appdev
             Properties.Settings.Default.selectedSizeHeight = size_HuaweiP30[1];
             Properties.Settings.Default.Save();
         }
+
+        private void galaxyTab3_Click(object sender, RoutedEventArgs e)
+        {
+            uncheckDisplays();
+
+            Width = size_GalaxyTab3[0];
+            Height = size_GalaxyTab3[1];
+
+            // set as checked
+            galaxyTab3.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_GalaxyTab3;
+            Properties.Settings.Default.selectedSizeWidth = size_GalaxyTab3[0];
+            Properties.Settings.Default.selectedSizeHeight = size_GalaxyTab3[1];
+            Properties.Settings.Default.Save();
+        }
+
+        private void laptop_Click(object sender, RoutedEventArgs e)
+        {
+            uncheckDisplays();
+
+            Width = size_Laptop[0];
+            Height = size_Laptop[1];
+
+            // set as checked
+            Laptop.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_Laptop;
+            Properties.Settings.Default.selectedSizeWidth = size_Laptop[0];
+            Properties.Settings.Default.selectedSizeHeight = size_Laptop[1];
+            Properties.Settings.Default.Save();
+        }
+
+        private void desktop_Click(object sender, RoutedEventArgs e)
+        {
+            uncheckDisplays();
+
+            Width = size_Desktop[0];
+            Height = size_Desktop[1];
+
+            // set as checked
+            Desktop.IsChecked = true;
+
+            // Save as last used preset
+            Properties.Settings.Default.selectedPreset = Preset_Desktop;
+            Properties.Settings.Default.selectedSizeWidth = size_Desktop[0];
+            Properties.Settings.Default.selectedSizeHeight = size_Desktop[1];
+            Properties.Settings.Default.Save();
+        }
+
         #endregion
 
         private void refreshpage_Click(object sender, RoutedEventArgs e)
