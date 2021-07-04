@@ -1,0 +1,53 @@
+﻿<Window x:Class="appdev.UI.CreateAccount"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:appdev.UI"
+        mc:Ignorable="d"
+        Title="CreateAccount" Height="500" Width="450" ResizeMode="NoResize" Loaded="Window_Loaded">
+    <Grid Margin="35">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="78*" />
+            <ColumnDefinition Width="109*" />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Full name" FontSize="14" Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" Height="29" />
+        <TextBox x:Name="txtFullName" FontSize="14" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Height="21" />
+
+        <Label Content="E-mail address" FontSize="14" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Height="29" />
+        <TextBox x:Name="txtEmail" FontSize="14" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Height="21" />
+
+        <Label Content="Phone number" FontSize="14" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Height="29" />
+        <TextBox x:Name="txtPhone" FontSize="14" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" Height="21" />
+
+        <Label Content="Address" FontSize="14" Grid.Row="3" Grid.Column="0" VerticalAlignment="Top" Height="29" />
+        <TextBox x:Name="txtAddress" FontSize="14" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Height="21" />
+
+        <StackPanel Orientation="Horizontal" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Width="175">
+            <Button x:Name="accCancelCloseWindow" Content="Close" VerticalAlignment="Bottom"
+                HorizontalAlignment="Right"
+                Width="80" Height="25" Click="accCancelCloseWindow_Click"/>
+
+            <Button x:Name="accCreateAccount" Content="Create" VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" Margin="15 0 0 0"
+                Width="80" Height="25" Click="accCreateAccount_Click"/>
+        </StackPanel>
+
+
+
+        <!-- Error Reporting -->
+        <TextBlock Name="errName" Text="" TextWrapping="Wrap" FontSize="10" Grid.Row="2" Grid.Column="1" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" Height="13" Width="0" />
+
+    </Grid>
+</Window>

@@ -86,11 +86,9 @@ C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\CefSharp.Core.xml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\CefSharp.Wpf.pdb
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\CefSharp.Wpf.xml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.csproj.AssemblyReference.cache
-C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\MainWindow.g.cs
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\App.g.cs
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev_MarkupCompile.cache
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev_MarkupCompile.lref
-C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\MainWindow.baml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.g.resources
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.Properties.Resources.resources
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\appdev.csproj.GenerateResource.cache
@@ -107,8 +105,6 @@ C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.Internal.dll.c
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.UpdateInstaller.Client.GuiInterface.pdb
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.WPFUserInterface.pdb
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\nUpdate.WPFUserInterface.dll.config
-C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UserSettings.g.cs
-C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UserSettings.baml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\Stripe.net.dll
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\System.Runtime.CompilerServices.Unsafe.dll
@@ -118,3 +114,12 @@ C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\Stripe.net.pdb
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\Stripe.net.xml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\System.Threading.Tasks.Extensions.xml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\bin\Release\Newtonsoft.Json.dll
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CreateAccount.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\UserSettings.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CreateAccount.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\UserSettings.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\MainWindow.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\MainWindow.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\SelectAccount.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\SelectAccount.baml

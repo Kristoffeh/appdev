@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\kriss\Documents\GitHub\appdev\appdev\App.xaml
-11151548125
+5-1512052456
 
-61434861427
-16-1459751229
-MainWindow.xaml;
+101405161461
+1291541695034
+UI\CustomerPortal.xaml;UI\MainWindow.xaml;UI\CreateAccount.xaml;UI\SelectAccount.xaml;UI\UserSettings.xaml;
 
-False
+True
 

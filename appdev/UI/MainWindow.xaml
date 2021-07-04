@@ -11,6 +11,10 @@
         <DockPanel>
             <Menu IsMainMenu="True" Name="topMenu" DockPanel.Dock="Top">
                 <MenuItem Header="Options" FontSize="15" >
+                    <MenuItem Header="Customer" FontSize="15">
+                        <MenuItem Name="createAccount" Header="Create account" Click="createAccount_Click" FontSize="15" />
+                        <MenuItem Name="selectAccount" Header="Select account" Click="selectAccount_Click" FontSize="15" />
+                    </MenuItem>
                     <MenuItem Header="Displays" FontSize="15" >
                         <MenuItem Name="Desktop" Header="Desktop" Click="desktop_Click" FontSize="15" ></MenuItem>
                         <MenuItem Name="Laptop" Header="Laptop" Click="laptop_Click" FontSize="15" ></MenuItem>

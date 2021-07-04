@@ -162,3 +162,4 @@
 [0703/061532.413:INFO:CONSOLE(0)] "Autofocus processing was blocked because a document already has a focused element.", source: https://www.google.no/?gws_rd=ssl (0)
 [0703/062052.459:INFO:CONSOLE(8)] "page is loaded after 0.583 seconds", source: https://dhtiece9044ep.cloudfront.net/package/run_js/c85af7ab00313a390acc8239c61ce4102b07323628ccaa417cae8be826f5785d/xfalse/x14 (8)
 [0703/062133.065:INFO:CONSOLE(8)] "page is loaded after 0.454 seconds", source: https://dhtiece9044ep.cloudfront.net/package/run_js/c85af7ab00313a390acc8239c61ce4102b07323628ccaa417cae8be826f5785d/xfalse/x14 (8)
+[0705/010430.326:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled

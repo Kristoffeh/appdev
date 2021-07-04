@@ -82,5 +82,17 @@ namespace appdev.Properties {
                 this["toggleResizing"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeUserID {
+            get {
+                return ((string)(this["stripeUserID"]));
+            }
+            set {
+                this["stripeUserID"] = value;
+            }
+        }
     }
 }

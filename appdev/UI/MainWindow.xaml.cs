@@ -19,6 +19,8 @@ using System.Diagnostics;
 using nUpdate.Updating;
 using System.Globalization;
 using System.Threading;
+using Stripe;
+using appdev.UI;
 
 namespace appdev
 {
@@ -271,6 +273,50 @@ namespace appdev
             {
                 MessageBox.Show(a.Message, "error");
             }
+        }
+
+        public void permformPayment()
+        {
+            try
+            {
+                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                // payment token that contains card details
+                var opttoken = new TokenCreateOptions
+                {
+                    Card = new TokenCardOptions
+                    {
+                        Number = "",
+                        ExpYear = Convert.ToInt32(1),
+                        ExpMonth = Convert.ToInt32(1),
+                        Cvc = "",
+                    }
+                };
+
+                var tokenservice = new TokenService();
+                Token stripetoken = tokenservice.Create(opttoken);
+
+                // make a charge intent
+
+                // confirm payment
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Failed: " + ex.Message, "Operation failed");
+                throw;
+            }
+        }
+
+        private void createAccount_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAccount cracc = new CreateAccount();
+            cracc.Show();
+        }
+
+        private void selectAccount_Click(object sender, RoutedEventArgs e)
+        {
+            SelectAccount selacc = new SelectAccount();
+            selacc.Show();
         }
     }
 }

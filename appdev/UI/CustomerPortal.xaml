@@ -1,0 +1,124 @@
+﻿<Window x:Class="appdev.UI.CustomerPortal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:appdev.UI"
+        mc:Ignorable="d"
+        Title="CustomerPortal" Height="683.615" Width="1047.297" Loaded="Window_Loaded" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="RoundedBigGreenButton" TargetType="{x:Type Button}">
+            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                  Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#4CAF50"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#66BB6A"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="#FF838383"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        
+        
+        <Style x:Key="BigGreenButton" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" Padding="12 0 12 0" CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <!-- END OF RESOURCES -->
+    <Grid>
+        <Border Background="#222831" Height="37" VerticalAlignment="Top" Padding="20 0 20 0" />
+
+        <Grid Margin="25 0 25 0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35" />
+                <RowDefinition Height="40" />
+                <RowDefinition Height="100" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="35" />
+                <RowDefinition Height="175" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="90" />
+                <RowDefinition Height="90" />
+            </Grid.RowDefinitions>
+
+            <Border CornerRadius="8" Grid.Column="1" Grid.Row="2" Background="#FFF7F7F7" Padding="10" BorderBrush="#19000000" BorderThickness="1px">
+                <TextBlock Text="You don't have an active subscription, subscribe or check payment options in the top-right corner." 
+                        FontSize="14" TextWrapping="Wrap" Foreground="#FF464646"/>
+            </Border>
+
+            <!-- User ID BUTTON -->
+
+            <Button Content="User ID" Name="btnUserID" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0 5 0 0" Height="25"
+                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="13" Grid.Column="1" Background="#BF343F4D" Style="{DynamicResource BigGreenButton}" />
+            <!-- User ID BUTTON -->
+
+            <!-- SETTINGS BUTTON -->
+            <Button Content="Payment Options" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0 0 0 0" Width="140" Height="35"
+                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="15" Grid.Column="2">
+                <Button.Style>
+                    <Style TargetType="{x:Type Button}">
+                        <Setter Property="Background" Value="{x:Null}"/>
+
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Button}">
+                                    <Border Background="{TemplateBinding Background}">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </Border>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#BF343F4D"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+            <!-- END SETTINGS BUTTON -->
+
+
+            <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="1">
+                <Button Content="Subscribe" Foreground="#fff" Background="#43A047" BorderBrush="{x:Null}" Width="250" Height="90" FontSize="21" 
+                Template="{DynamicResource RoundedBigGreenButton}" VerticalAlignment="Top" />
+                <TextBlock TextWrapping="Wrap" Text="Subscribe for £4 /month" Foreground="#FF8B8B8B" FontSize="15" HorizontalAlignment="Center" Margin="0 15 0 0"  />
+            </StackPanel>
+
+            <!-- <TextBox Name="txtLogs" TextWrapping="Wrap" Margin="0 35 0 0" />-->
+        </Grid>
+
+
+    </Grid>
+</Window>
+    
+    
