@@ -18,7 +18,12 @@
                     </Border>
                 </StackPanel>
 
-                <StackPanel Name="vertiStacker" Orientation="Vertical" Margin="0 50 0 0">
+                <!-- List all cards -->
+                <StackPanel Name="vertiStacker" Orientation="Vertical" Margin="0 50 0 0" />
+
+
+                <!-- Default card -->
+                <StackPanel Name="horizFooterStackPanel" Orientation="Horizontal" Margin="0 50 0 0">
                     
                 </StackPanel>
 

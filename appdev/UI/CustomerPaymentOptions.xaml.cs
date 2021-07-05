@@ -26,10 +26,62 @@ namespace appdev.UI
             InitializeComponent();
         }
 
+        public class Cards
+        {
+            public string Type { get; set; }
+            public string CardNumber { get; set; }
+            public string Exp { get; set; }
+            public string CVC { get; set; }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
+                // Show cards in ListView
+                ListView li = new ListView();
+
+                // Enable gridview, its required to use columns.
+                var gridView = new GridView();
+                li.View = gridView;
+                li.FontSize = 15;
+
+
+                
+
+                
+
+
+                // Define columns
+                gridView.Columns.Add(new GridViewColumn
+                {
+                    Header = "Type",
+                    DisplayMemberBinding = new Binding("Type")
+                }); ; ;
+                gridView.Columns.Add(new GridViewColumn
+                {
+                    Header = "Card Number",
+                    DisplayMemberBinding = new Binding("CardNumber")
+                });
+                gridView.Columns.Add(new GridViewColumn
+                {
+                    Header = "Exp",
+                    DisplayMemberBinding = new Binding("Exp")
+                });
+                gridView.Columns.Add(new GridViewColumn
+                {
+                    Header = "CVC",
+                    DisplayMemberBinding = new Binding("CVC")
+                });
+
+                
+
+
+
+
+
+
+
                 StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
 
                 var servicea = new CustomerService();
@@ -70,22 +122,13 @@ namespace appdev.UI
                 var sr = new PaymentMethodService();
                 StripeList<PaymentMethod> paymentMethods = sr.List(opt);
 
-                /*CheckBox cb = new CheckBox();
-                cb.Content = "   Visa        **** **** **** 4242        12/24        ***";
-                cb.IsChecked = false;
-                cb.FontSize = 16;
-                vertiStacker.Children.Add(cb);*/
-
-
-
-                // MessageBox.Show("" + cards ,"");
-
                 if (cards.Count() == 0)
                 {
                     lblNoCards.Visibility = Visibility.Visible;
                 }
                 else
                 {
+
                     TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
                     foreach (PaymentMethod pm in paymentMethods.Data)
@@ -93,31 +136,20 @@ namespace appdev.UI
                         int i = 1;
                         i++;
 
-                        /*var window = new Window();
-                        var stackPanel = new StackPanel { Orientation = Orientation.Vertical };
-                        stackPanel.Children.Add(new Label { Content = "Label" });
-                        stackPanel.Children.Add(new Button { Content = "Button" });
-                        window.Content = stackPanel;*/
-
-
-                        CheckBox cb = new CheckBox();
-                        cb.Name = "cbList" + i;
-                        cb.Content = "  " + myTI.ToTitleCase(pm.Card.Brand) + "      " + "**** **** **** " + pm.Card.Last4 + "      " + "***" + "      " + pm.Card.ExpMonth + "/" + pm.Card.ExpYear;
-                        cb.IsChecked = false;
-                        cb.FontSize = 16;
-                        vertiStacker.Children.Add(cb);
-
-
-
-
-
-
-
-                        Console.WriteLine(pm.Card.Brand);
-                        Console.WriteLine(pm.Card.Last4);
-                        Console.WriteLine(pm.Card.ExpMonth);
-                        Console.WriteLine(pm.Card.ExpYear);
+                        // Add items
+                        li.Items.Add(
+                            new Cards
+                            {
+                                Type = myTI.ToTitleCase(pm.Card.Brand),
+                                CardNumber = "**** **** **** " + pm.Card.Last4,
+                                Exp = pm.Card.ExpMonth + "/" + pm.Card.ExpYear,
+                                CVC = "***"
+                            }
+                        );
                     }
+
+                    // Display stored items in a StackPanel
+                    vertiStacker.Children.Add(li);
 
                     string cust_id = c.Id;
 
