@@ -18,12 +18,15 @@
                     </Border>
                 </StackPanel>
 
+                <StackPanel Name="vertiStacker" Orientation="Vertical" Margin="0 50 0 0">
+                    
+                </StackPanel>
+
 
 
 
                 <Label Name="lblNoCards" Content="You don't have any cards stored." Foreground="red" FontSize="14" Visibility="Hidden" />
 
-                <CheckBox x:Name="cbListCards" Content="Visa        4242 4242 4242 4242        12/21        123" FontSize="14" VerticalContentAlignment="Center" Margin="0 15 0 0" />
             </StackPanel>
             
         </Border>
