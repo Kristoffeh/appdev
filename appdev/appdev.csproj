@@ -157,6 +157,9 @@
     <Compile Include="UI\CreateAccount.xaml.cs">
       <DependentUpon>CreateAccount.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\CustomerPaymentOptions.xaml.cs">
+      <DependentUpon>CustomerPaymentOptions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\CustomerPortal.xaml.cs">
       <DependentUpon>CustomerPortal.xaml</DependentUpon>
     </Compile>
@@ -166,6 +169,10 @@
     <Compile Include="UI\UserSettings.xaml.cs">
       <DependentUpon>UserSettings.xaml</DependentUpon>
     </Compile>
+    <Page Include="UI\CustomerPaymentOptions.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\CustomerPortal.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
