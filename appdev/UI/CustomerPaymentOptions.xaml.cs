@@ -1,6 +1,7 @@
 ﻿using Stripe;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -63,18 +64,17 @@ namespace appdev.UI
                 // List payment methods
                 var opt = new PaymentMethodListOptions
                 {
-                    Customer = "cus_Jmv6LCDGan315v",
+                    Customer = Properties.Settings.Default.stripeUserID,
                     Type = "card",
                 };
                 var sr = new PaymentMethodService();
                 StripeList<PaymentMethod> paymentMethods = sr.List(opt);
 
-                CheckBox cb = new CheckBox();
+                /*CheckBox cb = new CheckBox();
                 cb.Content = "   Visa        **** **** **** 4242        12/24        ***";
                 cb.IsChecked = false;
                 cb.FontSize = 16;
-
-                vertiStacker.Children.Add(cb);
+                vertiStacker.Children.Add(cb);*/
 
 
 
@@ -86,6 +86,7 @@ namespace appdev.UI
                 }
                 else
                 {
+                    TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
                     foreach (PaymentMethod pm in paymentMethods.Data)
                     {
@@ -99,8 +100,13 @@ namespace appdev.UI
                         window.Content = stackPanel;*/
 
 
+                        CheckBox cb = new CheckBox();
+                        cb.Name = "cbList" + i;
+                        cb.Content = "  " + myTI.ToTitleCase(pm.Card.Brand) + "      " + "**** **** **** " + pm.Card.Last4 + "      " + "***" + "      " + pm.Card.ExpMonth + "/" + pm.Card.ExpYear;
+                        cb.IsChecked = false;
+                        cb.FontSize = 16;
+                        vertiStacker.Children.Add(cb);
 
-                        
 
 
 
