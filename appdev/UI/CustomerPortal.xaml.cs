@@ -63,6 +63,23 @@ namespace appdev.UI
                 btnName.Content = customer_name.Name;
                 lblSubscribePrice.Text = "Subscribe for $" + String.Format("{0:0.00}", 4.99) + " /month";
 
+                var servicead = new SubscriptionService();
+                var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
+
+
+                // Display you are subscribed if you are subscribed
+                if (b.Status == "active")
+                {
+                    lblbNoSub.Visibility = Visibility.Hidden;
+                    btnSubscribe.IsEnabled = false;
+                    lblSubscribePrice.Text = "You are subscribed";
+                    // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
+                }
+
+                
+
+
+
 
 
 
@@ -72,26 +89,6 @@ namespace appdev.UI
                 MessageBox.Show(x.Message, "");
                 throw;
             }
-        }
-
-        void StripeCreateSubscription()
-        {
-            StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
-
-            var options = new SubscriptionCreateOptions
-            {
-                // Get Customer ID from application properties
-                Customer = Properties.Settings.Default.stripeUserID,
-                Items = new List<SubscriptionItemOptions>
-                {
-                new SubscriptionItemOptions
-                {
-                    Price = "price_1J9MIvDjGfNenHs5hp9wrYt3",
-                },
-              },
-            };
-            var service = new SubscriptionService();
-            service.Create(options);
         }
 
         private void btnSubscribe_Click(object sender, RoutedEventArgs e)
@@ -104,22 +101,19 @@ namespace appdev.UI
                 {
                     Customer = Properties.Settings.Default.stripeUserID,
                     Items = new List<SubscriptionItemOptions>
-
-                {
-                    new SubscriptionItemOptions
-                    {
-                      Price = "price_1J9MIvDjGfNenHs5hp9wrYt3",
+                        {
+                            new SubscriptionItemOptions
+                        {
+                            Price = "price_1J9h9BDjGfNenHs5oqzV2gDP",
+                        },
                     },
-                },
                 };
                 var service = new SubscriptionService();
                 var s = service.Create(options);
 
-                // Status handling
-                /*if (s.Status == "")
-                {
-
-                }*/
+                MessageBox.Show("" + s.Id);
+                Properties.Settings.Default.stripeSubscriptionID = s.Id;
+                Properties.Settings.Default.Save();
 
             }
             catch (Exception ex)

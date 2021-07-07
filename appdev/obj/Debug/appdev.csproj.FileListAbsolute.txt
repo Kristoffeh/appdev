@@ -127,3 +127,5 @@ C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Debug\UI\CustomerPortal.g.cs
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Debug\UI\CustomerPortal.baml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Debug\UI\CustomerPaymentOptions.g.cs
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Debug\UI\CustomerPaymentOptions.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Debug\UI\CardAdd.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Debug\UI\CardAdd.baml

@@ -94,5 +94,41 @@ namespace appdev.Properties {
                 this["stripeUserID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeSelectedCard {
+            get {
+                return ((string)(this["stripeSelectedCard"]));
+            }
+            set {
+                this["stripeSelectedCard"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string lvSelectedIndex {
+            get {
+                return ((string)(this["lvSelectedIndex"]));
+            }
+            set {
+                this["lvSelectedIndex"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeSubscriptionID {
+            get {
+                return ((string)(this["stripeSubscriptionID"]));
+            }
+            set {
+                this["stripeSubscriptionID"] = value;
+            }
+        }
     }
 }

@@ -8,10 +8,13 @@
         Title="CustomerPortal" Height="683.615" Width="1047.297" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate x:Key="RoundedBigGreenButton" TargetType="{x:Type Button}">
-            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" 
-                                  Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                                  Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                  Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
             </Border>
             <ControlTemplate.Triggers>
                 <Trigger Property="IsDefaulted" Value="True">
@@ -27,9 +30,9 @@
                     <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
                 </Trigger>
                 <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" TargetName="border" Value="#FFF4F4F4"/>
+                    <Setter Property="Background" TargetName="border" Value="#81C784"/>
                     <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
-                    <Setter Property="Foreground" Value="#FF838383"/>
+                    <Setter Property="Foreground" Value="#e0e0e0"/>
                 </Trigger>
             </ControlTemplate.Triggers>
         </ControlTemplate>
@@ -87,8 +90,8 @@
                 <RowDefinition Height="90" />
             </Grid.RowDefinitions>
 
-            <Border CornerRadius="8" Grid.Column="1" Grid.Row="2" Background="#FFF7F7F7" Padding="10" BorderBrush="#19000000" BorderThickness="1px">
-                <TextBlock Text="You don't have an active subscription, subscribe or check payment options in the top-right corner." 
+            <Border x:Name="lblbNoSub" CornerRadius="8" Grid.Column="1" Grid.Row="2" Background="#FFF7F7F7" Padding="10" BorderBrush="#19000000" BorderThickness="1px" Visibility="Visible">
+                <TextBlock x:Name="lblNoSub" Text="You don't have an active subscription, subscribe or check payment options in the top-right corner." 
                         FontSize="14" TextWrapping="Wrap" Foreground="#FF464646"/>
             </Border>
 
