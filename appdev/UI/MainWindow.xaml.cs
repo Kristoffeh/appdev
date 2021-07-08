@@ -29,6 +29,24 @@ namespace appdev
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region - Initialize Controls -
+        public ChromiumWebBrowser chromeBrowser;
+        #endregion
+
+        public void InitializeChromium()
+        {
+            CefSettings settings = new CefSettings();
+            settings.CachePath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "CefSharp\\Cache");
+            Cef.Initialize(settings);
+            
+            // Create browser component
+            chromeBrowser = new ChromiumWebBrowser();
+            chromeBrowser.Address = Properties.Settings.Default.setURL;
+
+            // Add to UI and fill
+            stackBrowser.Children.Add(chromeBrowser);
+        }
+
         #region - Variables -
         string Preset_iPhoneX = "iPhoneX";
         string Preset_Samsung9 = "Samsung9";
@@ -55,6 +73,7 @@ namespace appdev
         public MainWindow()
         {
             InitializeComponent();
+            InitializeChromium();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -64,7 +83,7 @@ namespace appdev
             var updaterUI = new UpdaterUI(manager, SynchronizationContext.Current);
             updaterUI.ShowUserInterface();
 
-            webBrowser.Address = Properties.Settings.Default.setURL;
+            // webBrowser.Address = Properties.Settings.Default.setURL;
 
             // MessageBox.Show("Selected Preset = " + Properties.Settings.Default.selectedPreset ,"DEBUG_MODE ACTIVE");
             // MessageBox.Show("Selected Size = " + Properties.Settings.Default.selectedSizeWidth + "x" + Properties.Settings.Default.selectedSizeHeight , "DEBUG_MODE ACTIVE");
@@ -247,8 +266,8 @@ namespace appdev
 
         private void refreshpage_Click(object sender, RoutedEventArgs e)
         {
-            webBrowser.Address = Properties.Settings.Default.setURL;
-            webBrowser.Reload();
+            chromeBrowser.Address = Properties.Settings.Default.setURL;
+            chromeBrowser.Reload();
         }
 
         private void about_Click(object sender, RoutedEventArgs e)

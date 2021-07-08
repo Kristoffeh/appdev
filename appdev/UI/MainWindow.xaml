@@ -36,7 +36,14 @@
                 </MenuItem>
             </Menu>
         </DockPanel>
-        <wpf:ChromiumWebBrowser x:Name="webBrowser" Margin="0 25 0 0" />
+        
+        
+        <!--<wpf:ChromiumWebBrowser x:Name="webBrowser" Margin="0 25 0 0" />-->
+
+        <Grid x:Name="stackBrowser" Margin="0 22 0 0">
+            
+        </Grid>
+        
 
 
     </Grid>
