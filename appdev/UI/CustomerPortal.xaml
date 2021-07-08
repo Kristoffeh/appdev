@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:appdev.UI"
         mc:Ignorable="d"
-        Title="CustomerPortal" Height="683.615" Width="1047.297" Loaded="Window_Loaded" ResizeMode="NoResize">
+        Title="Customer Dashboard" Height="683.615" Width="1047.297" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Window.Resources>
         <ControlTemplate x:Key="RoundedBigGreenButton" TargetType="{x:Type Button}">
             <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
@@ -37,6 +37,35 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
 
+        <ControlTemplate x:Key="btnCreateCustomer" TargetType="{x:Type Button}">
+            <Border x:Name="border" CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" 
+                    Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" 
+                                  Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" 
+                                  Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                  Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDefaulted" Value="True">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#64B5F6"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#90CAF9"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" TargetName="border" Value="#2196F3"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{x:Null}"/>
+                    <Setter Property="Foreground" Value="#e0e0e0"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
 
         <Style x:Key="BigGreenButton" TargetType="{x:Type Button}">
             <Setter Property="Template">
@@ -71,7 +100,16 @@
     <Grid>
         <Border Background="#222831" Height="37" VerticalAlignment="Top" Padding="20 0 20 0" />
 
-        <Grid Margin="25 0 25 0">
+        <Button x:Name="btnName" Content="Name" HorizontalAlignment="left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="37"
+                    BorderBrush="{x:Null}" Foreground="#fff" Margin="25 0 0 0" FontSize="15" Grid.Column="0" Style="{DynamicResource SimpleMenuHoverButton}" />
+
+        <Button Content="User ID" Name="btnUserID" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0,5,0,0" Height="25"
+                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="13" Grid.Column="1" Background="#BF343F4D" Style="{DynamicResource BigGreenButton}" />
+
+        <Button x:Name="CustomerPaymentOptions" Content="Payment Options" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0 0 25 0" Height="37"
+                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="15" Click="CustomerPaymentOptions_Click" Style="{DynamicResource SimpleMenuHoverButton}" />
+
+        <Grid Margin="25">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="250*" />
                 <ColumnDefinition Width="491*" />
@@ -91,23 +129,18 @@
             </Grid.RowDefinitions>
 
             <Border x:Name="lblbNoSub" CornerRadius="8" Grid.Column="1" Grid.Row="2" Background="#FFF7F7F7" Padding="10" BorderBrush="#19000000" BorderThickness="1px" Visibility="Visible">
-                <TextBlock x:Name="lblNoSub" Text="You don't have an active subscription, subscribe or check payment options in the top-right corner." 
+                <TextBlock x:Name="lblNoSub" Text="You don't have an active subscription, subscribe to get all the features." 
                         FontSize="14" TextWrapping="Wrap" Foreground="#FF464646"/>
             </Border>
 
             <!-- User ID BUTTON -->
 
 
-            <Button x:Name="btnName" Content="Name" HorizontalAlignment="left" VerticalAlignment="Top" HorizontalContentAlignment="Center" Height="37"
-                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="15" Grid.Column="0" Style="{DynamicResource SimpleMenuHoverButton}" />
 
-            <Button Content="User ID" Name="btnUserID" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0,5,0,0" Height="25"
-                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="13" Grid.Column="1" Background="#BF343F4D" Style="{DynamicResource BigGreenButton}" />
             <!-- User ID BUTTON -->
 
             <!-- SETTINGS BUTTON -->
-            <Button x:Name="CustomerPaymentOptions" Content="Payment Options" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Center" Margin="0 0 0 0" Height="37"
-                    BorderBrush="{x:Null}" Foreground="#fff" FontSize="15" Grid.Column="2" Click="CustomerPaymentOptions_Click" Style="{DynamicResource SimpleMenuHoverButton}" />
+
             <!-- END SETTINGS BUTTON -->
 
 
@@ -120,7 +153,10 @@
             <!-- <TextBox Name="txtLogs" TextWrapping="Wrap" Margin="0 35 0 0" />-->
         </Grid>
 
-
+        <Grid Margin="40">
+            <Button x:Name="btnCreateCustomerAccount" Content="Create Account" Foreground="#fff" Background="#FF2196F3" BorderBrush="{x:Null}" FontSize="17" 
+                Template="{DynamicResource btnCreateCustomer}" VerticalAlignment="Bottom" Padding="15 7 15 7" HorizontalAlignment="Center" Click="btnCreateCustomerAccount_Click" />
+        </Grid>
     </Grid>
 </Window>
     

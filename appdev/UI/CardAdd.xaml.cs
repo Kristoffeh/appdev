@@ -122,13 +122,13 @@ namespace appdev.UI
                     var attachservice = new PaymentMethodService();
 
                     attachservice.Attach(cardCreated.Id, attachoptions);
-                    success = true;
+                    // success = true;
+                    UpdateLog("Card successfully saved with ID " + cardCreated.Id);
                 }
 
                 if (success == true)
                 {
-                    UpdateLog("Card successfully saved!");
-                    MessageBox.Show("Successfully added payment method.","Success", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Successfully added payment method.", "Success", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
 
             }

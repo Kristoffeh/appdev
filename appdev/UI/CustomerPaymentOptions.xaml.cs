@@ -99,24 +99,13 @@ namespace appdev.UI
                 #endregion
 
                 #region - Objects and Variables -
+                // Customer object
                 var servicea = new CustomerService();
                 var r_customer = servicea.Get(Properties.Settings.Default.stripeUserID);
 
                 // Get account balance
                 var sd = new BalanceService();
                 Balance balance = sd.Get();
-
-                // Cards object (list all cards)
-                var service = new CardService();
-                var options = new CardListOptions
-                {
-                    Limit = 3,
-                };
-                var cards = service.List(Properties.Settings.Default.stripeUserID, options);
-
-                // Customer object
-                var serviceb = new CustomerService();
-                var c = serviceb.Get(Properties.Settings.Default.stripeUserID);
 
                 // List payment methods
                 var opt = new PaymentMethodListOptions
@@ -145,7 +134,7 @@ namespace appdev.UI
 
                 #region - Card doesn't exist / add cards -
                 // If no cards are added
-                if (cards.Count() == 0)
+                if (paymentMethods.Count() == 0)
                 {
                     // Give feedback to user that they don't have any cards set up.
                     lblNoCards.Visibility = Visibility.Visible;
@@ -185,7 +174,7 @@ namespace appdev.UI
                     // Display stored items in a StackPanel
                     vertiStacker.Children.Add(listView);
 
-                    string cust_id = c.Id;
+                    string cust_id = r_customer.Id;
 
 
                     // MessageBox.Show(paymentMethods., "");
@@ -259,6 +248,12 @@ namespace appdev.UI
 
                 throw;
             }
+        }
+
+        private void btnAddCard_Click(object sender, RoutedEventArgs e)
+        {
+            CardAdd openCardAdd = new CardAdd();
+            openCardAdd.Show();
         }
     }
 }

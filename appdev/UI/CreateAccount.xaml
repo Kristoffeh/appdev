@@ -5,15 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:appdev.UI"
         mc:Ignorable="d"
-        Title="CreateAccount" Height="500" Width="450" ResizeMode="NoResize" Loaded="Window_Loaded">
+        Title="CreateAccount" Height="290" Width="450" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid Margin="35">
         <Grid.RowDefinitions>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="35"/>
-            <RowDefinition Height="35"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>

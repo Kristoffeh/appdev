@@ -31,58 +31,59 @@ namespace appdev.UI
         {
             try
             {
-                Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
-                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-
-                CultureInfo ci = new CultureInfo("en-US");
-                CultureInfo.DefaultThreadCurrentCulture = ci;
-                CultureInfo.DefaultThreadCurrentUICulture = ci;
-
-                // Retrieve product
-                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
-
-                var service = new ProductService();
-                var service_output = service.Get("prod_JmwBudJpNuZxXC");
-
-                
-                btnUserID.Content = Properties.Settings.Default.stripeUserID + "";
-
-                // txtLogs.Text += "User ID: " + Properties.Settings.Default.stripeUserID + "\r\n \r\n";
-                // txtLogs.Text += service_output;
-                // StripeCreateSubscription();
-
-
-                // Retrieve name from Stripe
-                var service_name = new CustomerService();
-                var customer_name = service_name.Get(Properties.Settings.Default.stripeUserID);
-
-                // Subscription service
-                var servicea = new SubscriptionItemService();
-                var asd = servicea.Get("si_JnHj9eFeVEqXGV");
-
-                btnName.Content = customer_name.Name;
-                lblSubscribePrice.Text = "Subscribe for $" + String.Format("{0:0.00}", 4.99) + " /month";
-
-                var servicead = new SubscriptionService();
-                var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
-
-
-                // Display you are subscribed if you are subscribed
-                if (b.Status == "active")
+                if (Properties.Settings.Default.stripeUserID == "")
                 {
-                    lblbNoSub.Visibility = Visibility.Hidden;
+                    btnUserID.Content = "Guest";
                     btnSubscribe.IsEnabled = false;
-                    lblSubscribePrice.Text = "You are subscribed";
-                    // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
                 }
+                else
+                {
+                    Thread.CurrentThread.CurrentCulture = new CultureInfo("en-US");
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
 
+                    CultureInfo ci = new CultureInfo("en-US");
+                    CultureInfo.DefaultThreadCurrentCulture = ci;
+                    CultureInfo.DefaultThreadCurrentUICulture = ci;
+
+                    // Retrieve product
+                    StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                    var service = new ProductService();
+                    var service_output = service.Get("prod_JmwBudJpNuZxXC");
+
+
+                    btnUserID.Content = Properties.Settings.Default.stripeUserID + "";
+
+                    // txtLogs.Text += "User ID: " + Properties.Settings.Default.stripeUserID + "\r\n \r\n";
+                    // txtLogs.Text += service_output;
+                    // StripeCreateSubscription();
+
+
+                    // Retrieve name from Stripe
+                    var service_name = new CustomerService();
+                    var customer_name = service_name.Get(Properties.Settings.Default.stripeUserID);
+
+                    // Subscription service
+                    var servicea = new SubscriptionItemService();
+                    var asd = servicea.Get("si_JnHj9eFeVEqXGV");
+
+                    btnName.Content = customer_name.Name;
+                    lblSubscribePrice.Text = "Subscribe for $" + String.Format("{0:0.00}", 4.99) + " /month";
+
+                    var servicead = new SubscriptionService();
+                    var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
+
+
+                    // Display you are subscribed if you are subscribed
+                    if (b.Status == "active")
+                    {
+                        lblbNoSub.Visibility = Visibility.Hidden;
+                        btnSubscribe.IsEnabled = false;
+                        lblSubscribePrice.Text = "You are subscribed";
+                        // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
+                    }
+                }
                 
-
-
-
-
-
-
             }
             catch (Exception x)
             {
@@ -127,6 +128,12 @@ namespace appdev.UI
         {
             CustomerPaymentOptions cpo = new CustomerPaymentOptions();
             cpo.Show();
+        }
+
+        private void btnCreateCustomerAccount_Click(object sender, RoutedEventArgs e)
+        {
+            CreateAccount cr = new CreateAccount();
+            cr.Show();
         }
     }
 }

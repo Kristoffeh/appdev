@@ -68,7 +68,7 @@ namespace appdev.UI
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Properties.Settings.Default.stripeUserID,"DEBUG_MODE");
+            // MessageBox.Show(Properties.Settings.Default.stripeUserID,"DEBUG_MODE");
         }
     }
 }
