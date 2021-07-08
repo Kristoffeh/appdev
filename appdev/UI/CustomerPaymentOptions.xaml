@@ -41,7 +41,7 @@
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
             <Button x:Name="btnDeleteCard" Content="Delete Card" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="10 4 10 4" Margin="0 0 15 0" Click="btnDeleteCard_Click" />
-            <Button x:Name="btnEditCard" Content="Edit Card" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="10 4 10 4" Margin="0 0 15 0" />
+            <Button x:Name="btnEditCard" Content="Edit Card" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="10 4 10 4" Margin="0 0 15 0" Click="btnEditCard_Click" />
             <Button x:Name="btnAddCard" Content="Add Card" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="10 4 10 4" Click="btnAddCard_Click" />
         </StackPanel>
 

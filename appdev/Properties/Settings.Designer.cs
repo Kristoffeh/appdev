@@ -130,5 +130,77 @@ namespace appdev.Properties {
                 this["stripeSubscriptionID"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeSelectedExpiryDate {
+            get {
+                return ((string)(this["stripeSelectedExpiryDate"]));
+            }
+            set {
+                this["stripeSelectedExpiryDate"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeSelectedCVC {
+            get {
+                return ((string)(this["stripeSelectedCVC"]));
+            }
+            set {
+                this["stripeSelectedCVC"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeDefaultPaymentMethod {
+            get {
+                return ((string)(this["stripeDefaultPaymentMethod"]));
+            }
+            set {
+                this["stripeDefaultPaymentMethod"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int stripeSelectedExpiryMonth {
+            get {
+                return ((int)(this["stripeSelectedExpiryMonth"]));
+            }
+            set {
+                this["stripeSelectedExpiryMonth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int stripeSelectedExpiryYear {
+            get {
+                return ((int)(this["stripeSelectedExpiryYear"]));
+            }
+            set {
+                this["stripeSelectedExpiryYear"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string stripeSelectedCardNumberFull {
+            get {
+                return ((string)(this["stripeSelectedCardNumberFull"]));
+            }
+            set {
+                this["stripeSelectedCardNumberFull"] = value;
+            }
+        }
     }
 }

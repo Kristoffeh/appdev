@@ -154,6 +154,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI\CardEdit.xaml.cs">
+      <DependentUpon>CardEdit.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\CardAdd.xaml.cs">
       <DependentUpon>CardAdd.xaml</DependentUpon>
     </Compile>
@@ -172,6 +175,10 @@
     <Compile Include="UI\UserSettings.xaml.cs">
       <DependentUpon>UserSettings.xaml</DependentUpon>
     </Compile>
+    <Page Include="UI\CardEdit.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="UI\CardAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

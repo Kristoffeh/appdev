@@ -44,11 +44,12 @@ namespace appdev.UI
             public string Type { get; set; }
             public string CardNumber { get; set; }
             public string Exp { get; set; }
+            public long ExpMonth { get; set; }
+            public long ExpYear { get; set; }
             public string CVC { get; set; }
             public string Default { get; set; }
-            
         }
-         
+        
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
@@ -150,8 +151,6 @@ namespace appdev.UI
                 }*/
                 #endregion
 
-                
-
                 #region - Card doesn't exist / add cards -
                 // If no cards are added
                 if (paymentMethods.Count() == 0)
@@ -184,6 +183,8 @@ namespace appdev.UI
                                 Type = myTI.ToTitleCase(pm.Card.Brand),
                                 CardNumber = "**** **** **** " + pm.Card.Last4,
                                 Exp = pm.Card.ExpMonth + "/" + pm.Card.ExpYear,
+                                ExpMonth = pm.Card.ExpMonth,
+                                ExpYear = pm.Card.ExpYear,
                                 CVC = "***",
                                 Default = isDefault,
                             }
@@ -217,13 +218,10 @@ namespace appdev.UI
                 service.Detach(Properties.Settings.Default.stripeSelectedCard);
 
                 MessageBox.Show("The selected card has been removed from your account.", "Card Removed");
-
-
-                // listView.Items.RemoveAt(listView.SelectedIndex);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message ,"");
+                MessageBox.Show(ex.Message, "");
             }
         }
 
@@ -233,25 +231,24 @@ namespace appdev.UI
             try
             {
                 // Get ID selected item
-                var selectedItem = (Cards)listView.SelectedItems[0];
-
+                var s = (Cards)listView.SelectedItems[0];
 
                 // Save value to temporary local user settings.
-                Properties.Settings.Default.stripeSelectedCard = selectedItem.UserID;
+                // This property is used to cache the selected card when it is going to get deleted.
+                Properties.Settings.Default.stripeSelectedCard = s.UserID;
+
+                //  Store entire card number with 16 numbers
+                Properties.Settings.Default.stripeSelectedCardNumberFull = s.CardNumber;
+
+                // Store Expiration-date, CVC and ID for default payment method.
+                Properties.Settings.Default.stripeSelectedExpiryDate = s.Exp;
+                Properties.Settings.Default.stripeSelectedExpiryMonth = Convert.ToInt32(s.ExpMonth);
+                Properties.Settings.Default.stripeSelectedExpiryYear = Convert.ToInt32(s.ExpYear);
+                Properties.Settings.Default.stripeSelectedCVC = s.CVC;
+                Properties.Settings.Default.stripeDefaultPaymentMethod = s.Default;
 
                 // Save changes to local user settings.
                 Properties.Settings.Default.Save();
-
-
-
-
-
-
-
-
-
-
-
             }
             catch (Exception ex)
             {
@@ -270,6 +267,12 @@ namespace appdev.UI
         private void listView_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
 
+        }
+
+        private void btnEditCard_Click(object sender, RoutedEventArgs e)
+        {
+            CardEdit ce = new CardEdit();
+            ce.Show();
         }
     }
 }
