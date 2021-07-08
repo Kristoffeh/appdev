@@ -31,7 +31,12 @@ namespace appdev.UI
         {
             try
             {
-                if (Properties.Settings.Default.stripeUserID == "")
+                // Retrieve product
+                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                // MessageBox.Show(Properties.Settings.Default.stripeUserID);
+
+                if (Properties.Settings.Default.stripeUserID.Length == 0)
                 {
                     btnUserID.Content = "Guest";
                     btnSubscribe.IsEnabled = false;
@@ -45,14 +50,13 @@ namespace appdev.UI
                     CultureInfo.DefaultThreadCurrentCulture = ci;
                     CultureInfo.DefaultThreadCurrentUICulture = ci;
 
-                    // Retrieve product
-                    StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+                    
 
                     var service = new ProductService();
                     var service_output = service.Get("prod_JmwBudJpNuZxXC");
 
 
-                    btnUserID.Content = Properties.Settings.Default.stripeUserID + "";
+                    btnUserID.Content = Properties.Settings.Default.stripeUserID;
 
                     // txtLogs.Text += "User ID: " + Properties.Settings.Default.stripeUserID + "\r\n \r\n";
                     // txtLogs.Text += service_output;
@@ -68,20 +72,31 @@ namespace appdev.UI
                     var asd = servicea.Get("si_JnHj9eFeVEqXGV");
 
                     btnName.Content = customer_name.Name;
-                    lblSubscribePrice.Text = "Subscribe for $" + String.Format("{0:0.00}", 4.99) + " /month";
+                    decimal units = Convert.ToDecimal(asd.Price.UnitAmountDecimal);
+                    decimal funits = units / 100;
+
+
+                    lblSubscribePrice.Text = "Subscribe for $" + String.Format("{0:0.00}", funits) + " /month";
 
                     var servicead = new SubscriptionService();
-                    var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
-
-
-                    // Display you are subscribed if you are subscribed
-                    if (b.Status == "active")
+                    
+                    if (Properties.Settings.Default.stripeSubscriptionID.Length != 0)
                     {
-                        lblbNoSub.Visibility = Visibility.Hidden;
-                        btnSubscribe.IsEnabled = false;
-                        lblSubscribePrice.Text = "You are subscribed";
-                        // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
+                        var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
+
+                        // Display you are subscribed if you are subscribed
+                        if (b.Status == "active")
+                        {
+                            lblbNoSub.Visibility = Visibility.Hidden;
+                            btnSubscribe.IsEnabled = false;
+                            lblSubscribePrice.Text = "You are subscribed for $4.99 /month";
+                            // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
+                        }
                     }
+
+
+
+
                 }
                 
             }
@@ -112,7 +127,7 @@ namespace appdev.UI
                 var service = new SubscriptionService();
                 var s = service.Create(options);
 
-                MessageBox.Show("" + s.Id);
+                MessageBox.Show("Payment successful, you are subscribed." + "Success");
                 Properties.Settings.Default.stripeSubscriptionID = s.Id;
                 Properties.Settings.Default.Save();
 

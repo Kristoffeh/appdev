@@ -45,15 +45,17 @@ namespace appdev.UI
             public string CardNumber { get; set; }
             public string Exp { get; set; }
             public string CVC { get; set; }
+            public string Default { get; set; }
             
         }
-
+         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             try
             {
                 #region - Events -
                 listView.SelectionChanged += onSelectionChanged;
+                listView.PreviewMouseRightButtonDown += listView_PreviewMouseRightButtonDown;
                 #endregion
 
                 #region - GridView (required for ListView Columns) -
@@ -90,6 +92,11 @@ namespace appdev.UI
                 {
                     Header = "CVC",
                     DisplayMemberBinding = new Binding("CVC")
+                });
+                gridView.Columns.Add(new GridViewColumn
+                {
+                    Header = "Default",
+                    DisplayMemberBinding = new Binding("Default")
                 });
                 #endregion
 
@@ -132,6 +139,19 @@ namespace appdev.UI
                 lblCreditValue.Content = "$" + String.Format("{0:0.00}", bstring);
                 #endregion
 
+                #region ' Default Payment Method '
+/*                if (r_customer.InvoiceSettings.DefaultPaymentMethodId == "")
+                {
+                    lblPaymentMethod.Content = "Default Payment Method: None";
+                }
+                else
+                {
+                    lblPaymentMethod.Content = "Default Payment Method: " + r_customer.InvoiceSettings.DefaultPaymentMethodId;
+                }*/
+                #endregion
+
+                
+
                 #region - Card doesn't exist / add cards -
                 // If no cards are added
                 if (paymentMethods.Count() == 0)
@@ -145,18 +165,16 @@ namespace appdev.UI
                     TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
                     int i = -1;
+                    string isDefault = "";
 
                     foreach (PaymentMethod pm in paymentMethods.Data)
                     {
-                        
                         i++;
 
-  /*                      listViewOverview.Add(0, "" + i);
-                        listViewOverview.Add(1, "" + pm.Id);
-                        listViewOverview.Add(2, "" + myTI.ToTitleCase(pm.Card.Brand));
-                        listViewOverview.Add(3, "**** **** **** " + pm.Card.Last4);
-                        listViewOverview.Add(4, pm.Card.ExpMonth + "/" + pm.Card.ExpYear);
-                        listViewOverview.Add(5, "***");*/
+                        if (r_customer.InvoiceSettings.DefaultPaymentMethodId == pm.Id)
+                        {
+                            isDefault = "Default";
+                        }
 
                         // Add items
                         listView.Items.Add(
@@ -167,6 +185,7 @@ namespace appdev.UI
                                 CardNumber = "**** **** **** " + pm.Card.Last4,
                                 Exp = pm.Card.ExpMonth + "/" + pm.Card.ExpYear,
                                 CVC = "***",
+                                Default = isDefault,
                             }
                         );
                     }
@@ -194,11 +213,8 @@ namespace appdev.UI
         {
             try
             {
-                var service = new CardService();
-                service.Delete(
-                  Properties.Settings.Default.stripeUserID,
-                  Properties.Settings.Default.stripeSelectedCard
-                );
+                var service = new PaymentMethodService();
+                service.Detach(Properties.Settings.Default.stripeSelectedCard);
 
                 MessageBox.Show("The selected card has been removed from your account.", "Card Removed");
 
@@ -217,23 +233,18 @@ namespace appdev.UI
             try
             {
                 // Get ID selected item
-                Cards card = (Cards)listView.SelectedItems[0];
+                var selectedItem = (Cards)listView.SelectedItems[0];
+
 
                 // Save value to temporary local user settings.
-                Properties.Settings.Default.stripeSelectedCard = card.ID;
+                Properties.Settings.Default.stripeSelectedCard = selectedItem.UserID;
 
                 // Save changes to local user settings.
                 Properties.Settings.Default.Save();
 
-                // listView.SelectedIndex
-                // MessageBox.Show("" + card.Index);
-                // listView.Items.RemoveAt(listView.SelectedIndex);
 
-                // this.listView.Items.Remove(listView.SelectedItem);
 
-                // listView.Items.Remove(card.Index);
 
-                
 
 
 
@@ -254,6 +265,11 @@ namespace appdev.UI
         {
             CardAdd openCardAdd = new CardAdd();
             openCardAdd.Show();
+        }
+
+        private void listView_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }
