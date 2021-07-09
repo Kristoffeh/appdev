@@ -147,7 +147,7 @@
             <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="1">
                 <Button x:Name="btnSubscribe" Content="Subscribe" Foreground="#fff" Background="#43A047" BorderBrush="{x:Null}" Width="250" Height="90" FontSize="21" 
                 Template="{DynamicResource RoundedBigGreenButton}" VerticalAlignment="Top" Click="btnSubscribe_Click" />
-                <TextBlock x:Name="lblSubscribePrice" TextWrapping="Wrap" Text="Subscribe for £4 /month" Foreground="#FF8B8B8B" FontSize="15" HorizontalAlignment="Center" Margin="0 15 0 0"  />
+                <TextBlock x:Name="lblSubscribePrice" TextWrapping="Wrap" Text="Subscribe for $4.99 /month" Foreground="#FF8B8B8B" FontSize="15" HorizontalAlignment="Center" Margin="0 15 0 0"  />
             </StackPanel>
 
             <!-- <TextBox Name="txtLogs" TextWrapping="Wrap" Margin="0 35 0 0" />-->
@@ -156,6 +156,8 @@
         <Grid Margin="40">
             <Button x:Name="btnCreateCustomerAccount" Content="Create Account" Foreground="#fff" Background="#FF2196F3" BorderBrush="{x:Null}" FontSize="17" 
                 Template="{DynamicResource btnCreateCustomer}" VerticalAlignment="Bottom" Padding="15 7 15 7" HorizontalAlignment="Center" Click="btnCreateCustomerAccount_Click" />
+
+            <Button x:Name="btnClearProperties" Content="Clear Properties" FontSize="14" VerticalAlignment="Bottom" Padding="7 3 7 3" HorizontalAlignment="Left" Click="btnClearProperties_Click" />
         </Grid>
     </Grid>
 </Window>

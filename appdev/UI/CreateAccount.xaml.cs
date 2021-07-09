@@ -1,4 +1,5 @@
-﻿using Stripe;
+﻿using appdev.Classes;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,8 @@ namespace appdev.UI
     /// </summary>
     public partial class CreateAccount : Window
     {
+        Logger log = new Logger();
+
         public CreateAccount()
         {
             InitializeComponent();
@@ -61,14 +64,22 @@ namespace appdev.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
                 throw;
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // MessageBox.Show(Properties.Settings.Default.stripeUserID,"DEBUG_MODE");
+            try
+            {
+                // MessageBox.Show(Properties.Settings.Default.stripeUserID,"DEBUG_MODE");
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
     }
 }

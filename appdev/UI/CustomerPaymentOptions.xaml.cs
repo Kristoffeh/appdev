@@ -1,4 +1,5 @@
-﻿using Stripe;
+﻿using appdev.Classes;
+using Stripe;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace appdev.UI
     /// </summary>
     public partial class CustomerPaymentOptions : Window
     {
+        Logger log = new Logger();
+
         // Show cards in ListView
         ListView listView = new ListView();
         IDictionary<int, string> listViewOverview = new Dictionary<int, string>();
@@ -47,7 +50,6 @@ namespace appdev.UI
             public long ExpMonth { get; set; }
             public long ExpYear { get; set; }
             public string CVC { get; set; }
-            public string Default { get; set; }
         }
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -93,11 +95,6 @@ namespace appdev.UI
                 {
                     Header = "CVC",
                     DisplayMemberBinding = new Binding("CVC")
-                });
-                gridView.Columns.Add(new GridViewColumn
-                {
-                    Header = "Default",
-                    DisplayMemberBinding = new Binding("Default")
                 });
                 #endregion
 
@@ -164,16 +161,11 @@ namespace appdev.UI
                     TextInfo myTI = new CultureInfo("en-US", false).TextInfo;
 
                     int i = -1;
-                    string isDefault = "";
 
                     foreach (PaymentMethod pm in paymentMethods.Data)
                     {
-                        i++;
 
-                        if (r_customer.InvoiceSettings.DefaultPaymentMethodId == pm.Id)
-                        {
-                            isDefault = "Default";
-                        }
+                        i++;
 
                         // Add items
                         listView.Items.Add(
@@ -186,9 +178,26 @@ namespace appdev.UI
                                 ExpMonth = pm.Card.ExpMonth,
                                 ExpYear = pm.Card.ExpYear,
                                 CVC = "***",
-                                Default = isDefault,
                             }
                         );
+
+                        /*var b = (Cards)listView.SelectedItems[0];
+                        if (b.ID == r_customer.InvoiceSettings.DefaultPaymentMethodId)
+                        {
+                            
+                        }*/
+
+
+
+
+
+
+
+
+
+
+
+
                     }
 
                     // Display stored items in a StackPanel
@@ -204,7 +213,7 @@ namespace appdev.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message ,"");
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
                 throw;
             }
         }
@@ -214,14 +223,23 @@ namespace appdev.UI
         {
             try
             {
-                var service = new PaymentMethodService();
-                service.Detach(Properties.Settings.Default.stripeSelectedCard);
+                if (listView.Items.Count == 0)
+                {
+                    log.DisplayLog("You don't have any cards listed, deletion process aborted.", "Not possible", "ok", "error");
+                }
+                else
+                {
+                    var service = new PaymentMethodService();
+                    service.Detach(Properties.Settings.Default.stripeSelectedCard);
 
-                MessageBox.Show("The selected card has been removed from your account.", "Card Removed");
+                    this.Close();
+                    MessageBox.Show("The selected card has been removed from your account.", "Card Removed");
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "");
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
             }
         }
 
@@ -245,23 +263,46 @@ namespace appdev.UI
                 Properties.Settings.Default.stripeSelectedExpiryMonth = Convert.ToInt32(s.ExpMonth);
                 Properties.Settings.Default.stripeSelectedExpiryYear = Convert.ToInt32(s.ExpYear);
                 Properties.Settings.Default.stripeSelectedCVC = s.CVC;
-                Properties.Settings.Default.stripeDefaultPaymentMethod = s.Default;
 
                 // Save changes to local user settings.
                 Properties.Settings.Default.Save();
+
+                // MessageBox.Show(Properties.Settings.Default.stripeSelectedCard);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "");
-
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
                 throw;
             }
         }
 
         private void btnAddCard_Click(object sender, RoutedEventArgs e)
         {
-            CardAdd openCardAdd = new CardAdd();
-            openCardAdd.Show();
+            try
+            {
+                // Check if user already has a card added
+                if (listView.Items.Count == 1)
+                {
+                    MessageBox.Show("You already have 1 card added.", "Warning", MessageBoxButton.OK, MessageBoxImage.Hand);
+                }
+                else
+                {
+                    this.Close();
+                    CardAdd openCardAdd = new CardAdd();
+                    openCardAdd.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
+
+
+
+
+
         }
 
         private void listView_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)

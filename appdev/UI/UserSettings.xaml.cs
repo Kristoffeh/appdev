@@ -1,4 +1,5 @@
-﻿using System;
+﻿using appdev.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace appdev
     /// </summary>
     public partial class UserSettings : Window
     {
+        Logger log = new Logger();
+
         public UserSettings()
         {
             InitializeComponent();
@@ -26,61 +29,117 @@ namespace appdev
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            // Load user settings
-            url_preview.Text = Properties.Settings.Default.setURL;
-            toggleResizing.IsChecked = Properties.Settings.Default.toggleResizing;
+            try
+            {
+                // Load user settings
+                url_preview.Text = Properties.Settings.Default.setURL;
+                toggleResizing.IsChecked = Properties.Settings.Default.toggleResizing;
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
 
         private void btnSettingsCancel_Click(object sender, RoutedEventArgs e)
         {
-            // Discard user settings and close
-            this.Close();
+            try
+            {
+                // Discard user settings and close
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
 
         public void saveAllSettings()
         {
-            // Apply user settings
-            Properties.Settings.Default.setURL = url_preview.Text;
-            Properties.Settings.Default.toggleResizing = toggleResizing.IsChecked.Value;
+            try
+            {
+                // Apply user settings
+                Properties.Settings.Default.setURL = url_preview.Text;
+                Properties.Settings.Default.toggleResizing = toggleResizing.IsChecked.Value;
 
 
 
-            // Save settings
-            Properties.Settings.Default.Save();
+                // Save settings
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
 
         private void btnSettingsApply_Click(object sender, RoutedEventArgs e)
         {
-            saveAllSettings();
+            try
+            {
+                saveAllSettings();
 
-            // Disable apply button for feedback
-            btnSettingsApply.IsEnabled = false;
+                // Disable apply button for feedback
+                btnSettingsApply.IsEnabled = false;
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Escape)
+            try
             {
-                this.Close();
+                if (e.Key == Key.Escape)
+                {
+                    this.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
             }
         }
 
         private void url_preview_KeyDown(object sender, KeyEventArgs e)
         {
-            // Allow user to save changes after making changes.
-            btnSettingsApply.IsEnabled = true;
-
-            if (e.Key == Key.Enter)
+            try
             {
-                // Save changes by pressing ENTER.
-                saveAllSettings();
-                btnSettingsApply.IsEnabled = false;
+                // Allow user to save changes after making changes.
+                btnSettingsApply.IsEnabled = true;
+
+                if (e.Key == Key.Enter)
+                {
+                    // Save changes by pressing ENTER.
+                    saveAllSettings();
+                    btnSettingsApply.IsEnabled = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
             }
         }
 
         private void toggleResizing_Click(object sender, RoutedEventArgs e)
         {
-            btnSettingsApply.IsEnabled = true;
+            try
+            {
+                btnSettingsApply.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
     }
 }

@@ -10,6 +10,8 @@
     <Grid Margin="30">
         <StackPanel Orientation="Vertical">
             <Label Content="EDIT CARD" FontSize="35" Margin="0 0 0 0" FontWeight="ExtraBlack" Foreground="#FF424242" Padding="0 0 0 0" HorizontalAlignment="Center" />
+            <TextBlock Text="Credit card number and CVC cannot be modified. Please create a new card if you wish to do so." 
+                       HorizontalAlignment="Center" TextWrapping="Wrap" Width="400" Foreground="#FF555555" FontStyle="Italic" FontSize="13" />
         </StackPanel>
 
         <Grid>
@@ -21,7 +23,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="30*" />
-                <RowDefinition Height="40*"/>
+                <RowDefinition Height="25*"/>
                 <RowDefinition Height="30*"/>
                 <RowDefinition Height="10*"/>
                 <RowDefinition Height="10*"/>
@@ -30,7 +32,7 @@
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">
                 <Label Content="Card Number" FontSize="17" Padding="0 0 0 0" Foreground="#FF424242" />
                 <Label Content="Card number (16 digits)" FontSize="13" FontWeight="ExtraLight" Padding="0" Margin="0 0 0 8" />
-                <TextBox Name="txtCardNumber" MaxLength="16" Height="25" Width="170" HorizontalAlignment="Left" FontSize="14" KeyDown="txtCardNumber_KeyDown" PreviewTextInput="txtCardNumber_PreviewTextInput" TextChanged="txtCardNumber_TextChanged"  />
+                <TextBox Name="txtCardNumber" MaxLength="16" Height="25" Width="170" HorizontalAlignment="Left" FontSize="14" KeyDown="txtCardNumber_KeyDown" PreviewTextInput="txtCardNumber_PreviewTextInput" TextChanged="txtCardNumber_TextChanged" IsEnabled="False" />
             </StackPanel>
             
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
@@ -45,7 +47,7 @@
             <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">
                 <Label Content="CVC" FontSize="17" Padding="0 0 0 0" Foreground="#FF424242" />
                 <Label Content="Secret PIN (3 digits)" FontSize="13" FontWeight="ExtraLight" Padding="0" Margin="0 0 0 8" />
-                <TextBox Name="txtCVC" Height="25" MaxLength="3" Width="40" HorizontalAlignment="Left" FontSize="14" />
+                <TextBox Name="txtCVC" Height="25" MaxLength="3" Width="40" HorizontalAlignment="Left" FontSize="14" IsEnabled="False" />
             </StackPanel>
 
             <TextBlock Name="errorLogs" TextWrapping="Wrap" Text="" Grid.Column="0" Grid.Row="2" />

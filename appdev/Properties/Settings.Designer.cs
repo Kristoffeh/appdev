@@ -157,18 +157,6 @@ namespace appdev.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string stripeDefaultPaymentMethod {
-            get {
-                return ((string)(this["stripeDefaultPaymentMethod"]));
-            }
-            set {
-                this["stripeDefaultPaymentMethod"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int stripeSelectedExpiryMonth {
             get {

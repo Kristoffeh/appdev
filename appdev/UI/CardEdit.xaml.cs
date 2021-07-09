@@ -33,6 +33,8 @@ namespace appdev.UI
             txtExpYear.Text = Properties.Settings.Default.stripeSelectedExpiryYear.ToString();
             txtCVC.Text = Properties.Settings.Default.stripeSelectedCVC;
             txtCardNumber.Text = Properties.Settings.Default.stripeSelectedCardNumberFull;
+
+            // MessageBox.Show(Properties.Settings.Default.stripeDefaultPaymentMethod);
         }
 
         private void txtCVCNumberValidation(object sender, TextCompositionEventArgs e)
@@ -76,6 +78,41 @@ namespace appdev.UI
                 StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
                 #endregion
 
+
+                var servicea = new CustomerService();
+                var r_customer = servicea.Get(Properties.Settings.Default.stripeUserID);
+
+                // Default Payment Method checkbox
+                // Save changes to checkbox
+                if (ckDefaultPaymentMethod.IsChecked == true)
+                {
+                    var optionss = new CustomerUpdateOptions
+                    {
+                        InvoiceSettings = new CustomerInvoiceSettingsOptions
+                        {
+                            DefaultPaymentMethod = Properties.Settings.Default.stripeSelectedCard
+                        }
+                    };
+                    var services = new CustomerService();
+                    services.Update(Properties.Settings.Default.stripeUserID, optionss);
+                }
+                else
+                {
+                    var optionss = new CustomerUpdateOptions
+                    {
+                        InvoiceSettings = new CustomerInvoiceSettingsOptions
+                        {
+                            DefaultPaymentMethod = ""
+                        }
+                    };
+                    var services = new CustomerService();
+                    services.Update(Properties.Settings.Default.stripeUserID, optionss);
+                }
+
+
+
+
+
                 // Conversions
                 int month = Convert.ToInt32(txtExpMonth.Text);
                 int year = Convert.ToInt32(txtExpYear.Text);
@@ -108,24 +145,23 @@ namespace appdev.UI
                     {
                         Card = new PaymentMethodCardOptions
                         {
-                            Number = txtCardNumber.Text,
                             ExpMonth = Convert.ToInt32(txtExpMonth.Text),
                             ExpYear = Convert.ToInt32(txtExpYear.Text),
-                            Cvc = txtCVC.Text
                         },
                     };
                     var service = new PaymentMethodService();
                     var cardCreated = service.Update(Properties.Settings.Default.stripeSelectedCard, options);
 
+                    // MessageBox.Show(Properties.Settings.Default.stripeSelectedCard);
 
                     // Attach card to User ID
-                    var attachoptions = new PaymentMethodAttachOptions
+/*                    var attachoptions = new PaymentMethodAttachOptions
                     {
                         Customer = Properties.Settings.Default.stripeUserID,
                     };
                     var attachservice = new PaymentMethodService();
+                    attachservice.Attach(cardCreated.Id, attachoptions);*/
 
-                    attachservice.Attach(cardCreated.Id, attachoptions);
                     // success = true;
                     UpdateLog("Card successfully updated with ID " + cardCreated.Id);
                 }

@@ -1,4 +1,5 @@
-﻿using Stripe;
+﻿using appdev.Classes;
+using Stripe;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace appdev.UI
     /// </summary>
     public partial class CardAdd : Window
     {
+        Logger log = new Logger();
+
         public CardAdd()
         {
             InitializeComponent();
@@ -123,21 +126,26 @@ namespace appdev.UI
 
                     attachservice.Attach(cardCreated.Id, attachoptions);
                     // success = true;
-                    UpdateLog("Card successfully saved with ID " + cardCreated.Id);
+                    // UpdateLog("Card successfully saved with ID " + cardCreated.Id);
+                    UpdateLog("Card successfully saved, you can close this window.");
+                    this.Close();
+                    CustomerPaymentOptions ca = new CustomerPaymentOptions();
+                    ca.Show();
                 }
 
                 if (success == true)
                 {
                     MessageBox.Show("Successfully added payment method.", "Success", MessageBoxButton.OK, MessageBoxImage.Warning);
+
                 }
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
             }
         }
-
         public void UpdateLog(string message)
         {
             errorLogs.Text += message + Environment.NewLine;

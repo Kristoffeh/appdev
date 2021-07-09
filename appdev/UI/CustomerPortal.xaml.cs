@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Globalization;
 using System.Threading;
+using appdev.Classes;
 
 namespace appdev.UI
 {
@@ -22,6 +23,8 @@ namespace appdev.UI
     /// </summary>
     public partial class CustomerPortal : Window
     {
+        Logger log = new Logger();
+
         public CustomerPortal()
         {
             InitializeComponent();
@@ -40,6 +43,12 @@ namespace appdev.UI
                 {
                     btnUserID.Content = "Guest";
                     btnSubscribe.IsEnabled = false;
+
+                    CustomerPaymentOptions.Visibility = Visibility.Hidden;
+                    CustomerPaymentOptions.IsEnabled = false;
+
+                    btnName.Visibility = Visibility.Hidden;
+                    btnName.IsEnabled = false;
                 }
                 else
                 {
@@ -93,16 +102,11 @@ namespace appdev.UI
                             // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
                         }
                     }
-
-
-
-
                 }
-                
             }
-            catch (Exception x)
+            catch (Exception ex)
             {
-                MessageBox.Show(x.Message, "");
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
                 throw;
             }
         }
@@ -134,21 +138,50 @@ namespace appdev.UI
             }
             catch (Exception ex)
             {
-                MessageBox.Show("" + ex.Message,"");
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
                 throw;
             }
         }
 
         private void CustomerPaymentOptions_Click(object sender, RoutedEventArgs e)
         {
-            CustomerPaymentOptions cpo = new CustomerPaymentOptions();
-            cpo.Show();
+            try
+            {
+                CustomerPaymentOptions cpo = new CustomerPaymentOptions();
+                cpo.Show();
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
 
         private void btnCreateCustomerAccount_Click(object sender, RoutedEventArgs e)
         {
-            CreateAccount cr = new CreateAccount();
-            cr.Show();
+            try
+            {
+                CreateAccount cr = new CreateAccount();
+                cr.Show();
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
+        }
+
+        private void btnClearProperties_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to clear cache and local properties? This will permanently log you out of your current account!", "Are you sure?", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
+            switch (result)
+            {
+                case MessageBoxResult.OK:
+                    Properties.Settings.Default.Reset();
+                    MessageBox.Show("Your local settings and properties have been cleared. You may register an account now.", "Success", MessageBoxButton.OK);
+                    break;
+            }
+            
         }
     }
 }

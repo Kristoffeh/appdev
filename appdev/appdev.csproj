@@ -154,6 +154,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Classes\Logger.cs" />
     <Compile Include="UI\CardEdit.xaml.cs">
       <DependentUpon>CardEdit.xaml</DependentUpon>
     </Compile>
