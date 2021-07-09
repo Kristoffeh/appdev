@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Stripe;
 
 namespace appdev
 {
@@ -31,9 +32,37 @@ namespace appdev
         {
             try
             {
+                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                if (Properties.Settings.Default.stripeSubscriptionID.Length != 0)
+                {
+                    var service = new SubscriptionService();
+                    var sub = service.Get(Properties.Settings.Default.stripeSubscriptionID);
+
+                    if (sub.Status != "active")
+                    {
+                        cktoggleResizing.IsEnabled = false;
+
+                        // Change requires restart label if users is not subscribed
+                        lblRequiresRestart.Content = "[Subscribers only]";
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
                 // Load user settings
                 url_preview.Text = Properties.Settings.Default.setURL;
-                toggleResizing.IsChecked = Properties.Settings.Default.toggleResizing;
+                cktoggleResizing.IsChecked = Properties.Settings.Default.toggleResizing;
             }
             catch (Exception ex)
             {
@@ -62,7 +91,7 @@ namespace appdev
             {
                 // Apply user settings
                 Properties.Settings.Default.setURL = url_preview.Text;
-                Properties.Settings.Default.toggleResizing = toggleResizing.IsChecked.Value;
+                Properties.Settings.Default.toggleResizing = cktoggleResizing.IsChecked.Value;
 
 
 

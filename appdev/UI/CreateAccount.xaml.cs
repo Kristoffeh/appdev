@@ -65,6 +65,7 @@ namespace appdev.UI
 
                 CustomerPortal cp = new CustomerPortal();
                 cp.Show();
+                this.Close();
                 /*cp.btnUserID.Content = customer.Id;
                 cp.btnName.Content = customer.Name;
 

@@ -35,10 +35,8 @@
         <StackPanel VerticalAlignment="Top" Grid.Row="2">
             <Label FontSize="16" Content="Resize Window" Padding="5 0 0 0" />
             <Label FontSize="13" Content="Toggle resizing for the main window." Padding="5 0 0 0" />
-            <Label FontSize="13" Content="(Requires restart)" Foreground="#FFA2A2A2" Padding="5 0 0 13" />
-            <CheckBox x:Name="toggleResizing" Content="Toggle resizing" Margin="5 0 0 0" FontSize="13" Click="toggleResizing_Click" />
-
-
+            <Label Name="lblRequiresRestart" FontSize="13" Content="(Requires restart)" Foreground="#FFA2A2A2" Padding="5 0 0 13" />
+            <CheckBox x:Name="cktoggleResizing" Content="Toggle resizing" Margin="5 0 0 0" FontSize="13" Click="toggleResizing_Click" />
         </StackPanel>
 
         <StackPanel VerticalAlignment="Top" Grid.Row="3" Height="85">

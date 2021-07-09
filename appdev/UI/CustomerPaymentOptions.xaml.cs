@@ -309,11 +309,5 @@ namespace appdev.UI
         {
 
         }
-
-        private void btnEditCard_Click(object sender, RoutedEventArgs e)
-        {
-            CardEdit ce = new CardEdit();
-            ce.Show();
-        }
     }
 }

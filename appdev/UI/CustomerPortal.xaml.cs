@@ -34,6 +34,8 @@ namespace appdev.UI
         {
             try
             {
+
+
                 // Retrieve product
                 StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
 
@@ -49,6 +51,9 @@ namespace appdev.UI
 
                     btnName.Visibility = Visibility.Hidden;
                     btnName.IsEnabled = false;
+
+                    // Hide cancellation button
+                    btnCancelSubscription.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
@@ -88,11 +93,23 @@ namespace appdev.UI
                     lblSubscribePrice.Text = "Subscribe for $" + String.Format("{0:0.00}", funits) + " /month";
 
                     var servicead = new SubscriptionService();
+                    var n = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
+
+                    if (n.Status == "active")
+                    {
+                        btnCancelSubscription.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        btnCancelSubscription.Visibility = Visibility.Collapsed;
+                    }
                     
 
                     if (Properties.Settings.Default.stripeSubscriptionID.Length != 0)
                     {
                         var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
+                        
+                        
 
                         
 
@@ -106,6 +123,11 @@ namespace appdev.UI
                             lblSubscribedUntil.Text = string.Format("{0:0}", ts.TotalDays) + " days left";
                             // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
                         }
+                    }
+                    // Local subscription ID is 0
+                    else
+                    {
+                        btnCancelSubscription.Visibility = Visibility.Hidden;
                     }
                 }
             }
@@ -123,12 +145,12 @@ namespace appdev.UI
                 if (Properties.Settings.Default.stripeCardAdded == false)
                 {
                     log.DisplayLog("You don't have any payment methods linked to your account!", "Error", "ok", "error");
-
                 }
                 else
                 {
                     StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
 
+                    #region - Subscription Options -
                     var options = new SubscriptionCreateOptions
                     {
                         Customer = Properties.Settings.Default.stripeUserID,
@@ -142,13 +164,15 @@ namespace appdev.UI
                     };
                     var service = new SubscriptionService();
                     var s = service.Create(options);
-
+                    #endregion
 
                     TimeSpan ts = s.CurrentPeriodEnd - DateTime.Now;
                     MessageBox.Show("Payment successful, subscription automatically renews in " + string.Format("{0:0}", ts.TotalDays) + " days", "Success");
                     lblSubscribedUntil.Text = string.Format("{0:0}", ts.TotalDays) + " days left";
                     btnSubscribe.IsEnabled = false;
                     lblbNoSub.Visibility = Visibility.Hidden;
+                    btnCancelSubscription.Visibility = Visibility.Visible;
+                    lblSubscribedUntil.Visibility = Visibility.Visible;
 
                     Properties.Settings.Default.stripeSubscriptionID = s.Id;
                     Properties.Settings.Default.Save();
@@ -205,6 +229,35 @@ namespace appdev.UI
                     break;
             }
             
+        }
+
+        private void btnCancelSubscription_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // API key
+                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                // Subscription object
+                var service = new SubscriptionService();
+                service.Cancel(Properties.Settings.Default.stripeSubscriptionID);
+
+                // Remove local property
+                Properties.Settings.Default.stripeSubscriptionID = "";
+
+                // Cancellation succeeded
+                btnSubscribe.IsEnabled = true;
+                btnCancelSubscription.Visibility = Visibility.Collapsed;
+                lblSubscribedUntil.Visibility = Visibility.Hidden;
+
+
+
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
     }
 }
