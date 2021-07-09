@@ -30,7 +30,9 @@ namespace appdev.UI
 
         private void accCancelCloseWindow_Click(object sender, RoutedEventArgs e)
         {
+            CustomerPortal cp = new CustomerPortal();
             this.Close();
+            cp.Show();
         }
 
         private void accCreateAccount_Click(object sender, RoutedEventArgs e)
@@ -55,12 +57,21 @@ namespace appdev.UI
                 var customer = service.Create(options);
 
                 // Success, give feedback to user
-                MessageBox.Show("Creation details: " + customer, "Account Creation");
+                /*MessageBox.Show("Creation details: " + customer, "Account Creation");*/
 
                 // Success -> Add user ID in local settings file.
                 Properties.Settings.Default.stripeUserID = customer.Id;
                 Properties.Settings.Default.Save();
 
+                CustomerPortal cp = new CustomerPortal();
+                cp.Show();
+                /*cp.btnUserID.Content = customer.Id;
+                cp.btnName.Content = customer.Name;
+
+                cp.CustomerPaymentOptions.IsEnabled = true;
+                cp.CustomerPaymentOptions.Visibility = Visibility.Visible;
+                cp.btnUserID.Visibility = Visibility.Visible;
+                cp.btnName.Visibility = Visibility.Visible;*/
             }
             catch (Exception ex)
             {

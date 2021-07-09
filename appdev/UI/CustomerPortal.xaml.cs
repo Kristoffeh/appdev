@@ -89,9 +89,12 @@ namespace appdev.UI
 
                     var servicead = new SubscriptionService();
                     
+
                     if (Properties.Settings.Default.stripeSubscriptionID.Length != 0)
                     {
                         var b = servicead.Get(Properties.Settings.Default.stripeSubscriptionID);
+
+                        
 
                         // Display you are subscribed if you are subscribed
                         if (b.Status == "active")
@@ -99,6 +102,8 @@ namespace appdev.UI
                             lblbNoSub.Visibility = Visibility.Hidden;
                             btnSubscribe.IsEnabled = false;
                             lblSubscribePrice.Text = "You are subscribed for $4.99 /month";
+                            TimeSpan ts = b.CurrentPeriodEnd - DateTime.Now;
+                            lblSubscribedUntil.Text = string.Format("{0:0}", ts.TotalDays) + " days left";
                             // lblSubscribePrice.Text = "You are subscribed - Subscription ID: " + Properties.Settings.Default.stripeSubscriptionID;
                         }
                     }
@@ -115,26 +120,39 @@ namespace appdev.UI
         {
             try
             {
-                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
-
-                var options = new SubscriptionCreateOptions
+                if (Properties.Settings.Default.stripeCardAdded == false)
                 {
-                    Customer = Properties.Settings.Default.stripeUserID,
-                    Items = new List<SubscriptionItemOptions>
+                    log.DisplayLog("You don't have any payment methods linked to your account!", "Error", "ok", "error");
+
+                }
+                else
+                {
+                    StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                    var options = new SubscriptionCreateOptions
+                    {
+                        Customer = Properties.Settings.Default.stripeUserID,
+                        Items = new List<SubscriptionItemOptions>
                         {
                             new SubscriptionItemOptions
-                        {
-                            Price = "price_1J9h9BDjGfNenHs5oqzV2gDP",
+                            {
+                                Price = "price_1J9h9BDjGfNenHs5oqzV2gDP",
+                            },
                         },
-                    },
-                };
-                var service = new SubscriptionService();
-                var s = service.Create(options);
+                    };
+                    var service = new SubscriptionService();
+                    var s = service.Create(options);
 
-                MessageBox.Show("Payment successful, you are subscribed." + "Success");
-                Properties.Settings.Default.stripeSubscriptionID = s.Id;
-                Properties.Settings.Default.Save();
 
+                    TimeSpan ts = s.CurrentPeriodEnd - DateTime.Now;
+                    MessageBox.Show("Payment successful, subscription automatically renews in " + string.Format("{0:0}", ts.TotalDays) + " days", "Success");
+                    lblSubscribedUntil.Text = string.Format("{0:0}", ts.TotalDays) + " days left";
+                    btnSubscribe.IsEnabled = false;
+                    lblbNoSub.Visibility = Visibility.Hidden;
+
+                    Properties.Settings.Default.stripeSubscriptionID = s.Id;
+                    Properties.Settings.Default.Save();
+                }
             }
             catch (Exception ex)
             {
@@ -162,6 +180,7 @@ namespace appdev.UI
             try
             {
                 CreateAccount cr = new CreateAccount();
+                this.Close();
                 cr.Show();
             }
             catch (Exception ex)
@@ -178,6 +197,10 @@ namespace appdev.UI
             {
                 case MessageBoxResult.OK:
                     Properties.Settings.Default.Reset();
+                    btnName.Visibility = Visibility.Hidden;
+                    CustomerPaymentOptions.Visibility = Visibility.Hidden;
+                    btnUserID.Content = "Guest";
+                    btnSubscribe.IsEnabled = false;
                     MessageBox.Show("Your local settings and properties have been cleared. You may register an account now.", "Success", MessageBoxButton.OK);
                     break;
             }

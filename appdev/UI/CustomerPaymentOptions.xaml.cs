@@ -30,11 +30,6 @@ namespace appdev.UI
         ListView listView = new ListView();
         IDictionary<int, string> listViewOverview = new Dictionary<int, string>();
 
-
-
-
-
-
         public CustomerPaymentOptions()
         {
             InitializeComponent();
@@ -232,8 +227,13 @@ namespace appdev.UI
                     var service = new PaymentMethodService();
                     service.Detach(Properties.Settings.Default.stripeSelectedCard);
 
+                    // Change state of CardAdded so that user is able to add cards again.
+                    Properties.Settings.Default.stripeCardAdded = false;
+                    Properties.Settings.Default.Save();
+
                     this.Close();
                     MessageBox.Show("The selected card has been removed from your account.", "Card Removed");
+
                 }
             }
             catch (Exception ex)

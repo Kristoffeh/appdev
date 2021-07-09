@@ -190,5 +190,17 @@ namespace appdev.Properties {
                 this["stripeSelectedCardNumberFull"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool stripeCardAdded {
+            get {
+                return ((bool)(this["stripeCardAdded"]));
+            }
+            set {
+                this["stripeCardAdded"] = value;
+            }
+        }
     }
 }

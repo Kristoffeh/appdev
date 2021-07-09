@@ -102,7 +102,7 @@ namespace appdev.UI
                 }
                 else
                 {
-                    // Create card
+                    // Create payment method
                     var options = new PaymentMethodCreateOptions
                     {
                         Type = "card",
@@ -125,9 +125,29 @@ namespace appdev.UI
                     var attachservice = new PaymentMethodService();
 
                     attachservice.Attach(cardCreated.Id, attachoptions);
+
+                    // Set CardAdded state to true so that user cannot add more cards.
+                    Properties.Settings.Default.stripeCardAdded = true;
+                    Properties.Settings.Default.Save();
+
+                    // Set added card as default payment method
+                    var optv = new CustomerUpdateOptions
+                    {
+                        InvoiceSettings = new CustomerInvoiceSettingsOptions
+                        {
+                             DefaultPaymentMethod = cardCreated.Id
+                        }
+                    };
+                    var servv = new CustomerService();
+                    servv.Update(Properties.Settings.Default.stripeUserID, optv);
+
+
+                    
                     // success = true;
                     // UpdateLog("Card successfully saved with ID " + cardCreated.Id);
                     UpdateLog("Card successfully saved, you can close this window.");
+
+
                     this.Close();
                     CustomerPaymentOptions ca = new CustomerPaymentOptions();
                     ca.Show();

@@ -148,6 +148,7 @@
                 <Button x:Name="btnSubscribe" Content="Subscribe" Foreground="#fff" Background="#43A047" BorderBrush="{x:Null}" Width="250" Height="90" FontSize="21" 
                 Template="{DynamicResource RoundedBigGreenButton}" VerticalAlignment="Top" Click="btnSubscribe_Click" />
                 <TextBlock x:Name="lblSubscribePrice" TextWrapping="Wrap" Text="Subscribe for $4.99 /month" Foreground="#FF8B8B8B" FontSize="15" HorizontalAlignment="Center" Margin="0 15 0 0"  />
+                <TextBlock x:Name="lblSubscribedUntil" TextWrapping="Wrap" Text="" Foreground="#FF8B8B8B" FontSize="15" HorizontalAlignment="Center" Margin="0 4 0 0"  />
             </StackPanel>
 
             <!-- <TextBox Name="txtLogs" TextWrapping="Wrap" Margin="0 35 0 0" />-->
