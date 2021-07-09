@@ -453,5 +453,11 @@ namespace appdev
                 throw;
             }
         }
+
+        private void open_customerdashboard_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerPortal cp = new CustomerPortal();
+            cp.Show();
+        }
     }
 }

@@ -11,10 +11,10 @@
         <DockPanel>
             <Menu IsMainMenu="True" Name="topMenu" DockPanel.Dock="Top">
                 <MenuItem Header="Options" FontSize="15" >
-                    <MenuItem Header="Customer" FontSize="15">
+                    <!--<MenuItem Header="Customer" FontSize="15">
                         <MenuItem Name="createAccount" Header="Create account" Click="createAccount_Click" FontSize="15" />
                         <MenuItem Name="selectAccount" Header="Select account" Click="selectAccount_Click" FontSize="15" />
-                    </MenuItem>
+                    </MenuItem>-->
                     <MenuItem Header="Displays" FontSize="15" >
                         <MenuItem Name="Desktop" Header="Desktop" Click="desktop_Click" FontSize="15" ></MenuItem>
                         <MenuItem Name="Laptop" Header="Laptop" Click="laptop_Click" FontSize="15" ></MenuItem>
@@ -28,7 +28,8 @@
                         <MenuItem Name="huaweip30" Header="Huawei P30" Click="huaweip30_Click" FontSize="15" ></MenuItem>
                     </MenuItem>
 
-                    <MenuItem Name="open_settings" Header="Settings" FontSize="15" Click="open_settings_Click" ></MenuItem>
+                    <MenuItem Name="open_settings" Header="User Settings" FontSize="15" Click="open_settings_Click" />
+                    <MenuItem Name="open_customerdashboard" Header="Customer Dashboard" FontSize="15" Click="open_customerdashboard_Click" />
                 </MenuItem>
                 <MenuItem Header="Other" FontSize="15" >
                     <MenuItem Name="refreshpage" Header="Refresh Page" FontSize="15" Click="refreshpage_Click" ></MenuItem>

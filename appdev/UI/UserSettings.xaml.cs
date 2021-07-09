@@ -68,6 +68,14 @@ namespace appdev
 
                 // Save settings
                 Properties.Settings.Default.Save();
+
+                // Go back to other window
+                this.Close();
+
+                // Set url of MainWindow
+                /*MainWindow main = new MainWindow();
+                main.chromeBrowser.Address = url_preview.Text;*/
+
             }
             catch (Exception ex)
             {
