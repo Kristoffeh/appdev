@@ -126,68 +126,42 @@ namespace appdev
                             samsungs10.IsEnabled = false;
                             huaweip30.IsEnabled = false;
                         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                     }
-                }
 
+                    UpdateManager manager = new UpdateManager(new Uri("http://171.22.152.50/Autoupdate/updates.json"), "<RSAKeyValue><Modulus>xrZGU0b25BslORvfovprGPVh0B+UOSO5VZcaZXW3nP1VWivPqdBcJDfDGwi+i1jJRPu/b6TPNpCpkCjbTtQDGkC0l1DxcY3p8LGJEOV4g/Gdn0LSULQdjSfBYOF6mh5mG6v+Arr0s10/JRRujIo/oSgUmK9A82iAh6dtgr0/a94zNjPHPC5jSTPD2YCbZmNaxX5tJgfRoqaAgYCeZyfmDAOXc+cGd09UYwsySi+Ox8wzksWB0BTZHLZTQQ5e0jN+LvVpwkMWYXdKqZ1bfPJv2CPQW9Ek6mX4l+NP3vUCWMUhJNUUTc6BjuAP8Xl4oR4Fo44slRWZtyzjNOvizrBXtHXXTQkIUdPbVjhs6di+vt++128kz6OYjZtuqjwxjLAn62ihm6VKk1BVmaP1oZO8FBkJOoU9qBMz65AT7uz4VOiZ+TPwPgO+YdUfLsPSQJWKz91pIRYHes9xy3fMMgzs/LVgOu+mfcC1cYVGOkG+CSlmCoReKtngL96PbVECF+BDsMt3Ke/mlrct2nkhSL1mHBqBAD3esgbPcXxO/gGFBviO24XADtuftZ88vcNVHR6Vlp+YZ1TOgUiv8t9/5C19866/hqjHiiaKY1ippsQQNsLh77dqtm2R4FuyVCPMkqVhfm9ebIg8zptZSQNh9/X05z35pClf80s4yBpJ53ehgHnFqcJYUeWS8pJQUoao78xCqSHhxbIhfGldgpRfWUGSkPcNY4/gC0dtFU+sZt4sAAC7jQZgCez1UqnpJtWzAxC9EsBUGN3IIiHv6Fm70jAHC+AMAOxgQXlx3qpuC3ftA8FB8RY+7S9LVU07LPiRBypPawgCP926v40C5ZkcziRAZyHeO4HYxIUm0Cm7nW1H/7e4gZHKJRIa0QXOX6JXybpwtZToblhCvwnP1U9rmUD/eurCp5gkEQaHRMUmiVSGPRLExbK03LS2ZBxQW+6MRzP00nHI0bRWAJCEjHgu1v704DLLZJbnz5xJVXHwWr/wY06PoGFRwX3lga82drp21ucgkTZ+USqPJUYwjhcI2zJVgvTy5kkENer0oNhO1nN9trV0O3A2IzoK3IBz//slo+gcc9TIjtD7jaPJvQgqqrzym/Q0WReA3TevRHgUKWU3aoi67dyDjJrX2u4OOuNKu9c2gJ/yWo2/yIXvnb2mt1paodlUqbmBRePKNPBlEUXDJKtZOszZzm7vu1caKzFBftVFfXMba1aGYkgp8iXmqMcK/vPcuOdySXAfZ3CjnPLvCdr+3Crs48VRN+HqqegvMyM5wNdmU7uHsCzYE8tNaUWiGpgW/aV74Abf/wvMEvthXlTb+1w7xU2f73SlZAlOsgpciQSbxqOD33kmGdqWxfDhhQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", new CultureInfo("en"));
 
+                    var updaterUI = new UpdaterUI(manager, SynchronizationContext.Current);
+                    updaterUI.ShowUserInterface();
 
+                    // webBrowser.Address = Properties.Settings.Default.setURL;
 
+                    // MessageBox.Show("Selected Preset = " + Properties.Settings.Default.selectedPreset ,"DEBUG_MODE ACTIVE");
+                    // MessageBox.Show("Selected Size = " + Properties.Settings.Default.selectedSizeWidth + "x" + Properties.Settings.Default.selectedSizeHeight , "DEBUG_MODE ACTIVE");
+                    // Load last used preset
+                    // width x height
+                    Width = Properties.Settings.Default.selectedSizeWidth;
+                    Height = Properties.Settings.Default.selectedSizeHeight;
 
+                    var prst = Properties.Settings.Default.selectedPreset;
+                    var rz = Properties.Settings.Default.toggleResizing;
 
+                    if (prst == Preset_iPhoneX) { iphonex.IsChecked = true; }
+                    if (prst == Preset_Samsung9) { samsungs9.IsChecked = true; }
+                    if (prst == Preset_Samsung10) { samsungs10.IsChecked = true; }
+                    if (prst == Preset_iPhone11) { iPhone11.IsChecked = true; }
+                    if (prst == Preset_HuaweiP30) { huaweip30.IsChecked = true; }
+                    if (prst == Preset_GalaxyTab3) { galaxyTab3.IsChecked = true; }
+                    if (prst == Preset_Laptop) { Laptop.IsChecked = true; }
+                    if (prst == Preset_Desktop) { Desktop.IsChecked = true; }
 
-
-
-
-
-                UpdateManager manager = new UpdateManager(new Uri("http://171.22.152.50/Autoupdate/updates.json"), "<RSAKeyValue><Modulus>xrZGU0b25BslORvfovprGPVh0B+UOSO5VZcaZXW3nP1VWivPqdBcJDfDGwi+i1jJRPu/b6TPNpCpkCjbTtQDGkC0l1DxcY3p8LGJEOV4g/Gdn0LSULQdjSfBYOF6mh5mG6v+Arr0s10/JRRujIo/oSgUmK9A82iAh6dtgr0/a94zNjPHPC5jSTPD2YCbZmNaxX5tJgfRoqaAgYCeZyfmDAOXc+cGd09UYwsySi+Ox8wzksWB0BTZHLZTQQ5e0jN+LvVpwkMWYXdKqZ1bfPJv2CPQW9Ek6mX4l+NP3vUCWMUhJNUUTc6BjuAP8Xl4oR4Fo44slRWZtyzjNOvizrBXtHXXTQkIUdPbVjhs6di+vt++128kz6OYjZtuqjwxjLAn62ihm6VKk1BVmaP1oZO8FBkJOoU9qBMz65AT7uz4VOiZ+TPwPgO+YdUfLsPSQJWKz91pIRYHes9xy3fMMgzs/LVgOu+mfcC1cYVGOkG+CSlmCoReKtngL96PbVECF+BDsMt3Ke/mlrct2nkhSL1mHBqBAD3esgbPcXxO/gGFBviO24XADtuftZ88vcNVHR6Vlp+YZ1TOgUiv8t9/5C19866/hqjHiiaKY1ippsQQNsLh77dqtm2R4FuyVCPMkqVhfm9ebIg8zptZSQNh9/X05z35pClf80s4yBpJ53ehgHnFqcJYUeWS8pJQUoao78xCqSHhxbIhfGldgpRfWUGSkPcNY4/gC0dtFU+sZt4sAAC7jQZgCez1UqnpJtWzAxC9EsBUGN3IIiHv6Fm70jAHC+AMAOxgQXlx3qpuC3ftA8FB8RY+7S9LVU07LPiRBypPawgCP926v40C5ZkcziRAZyHeO4HYxIUm0Cm7nW1H/7e4gZHKJRIa0QXOX6JXybpwtZToblhCvwnP1U9rmUD/eurCp5gkEQaHRMUmiVSGPRLExbK03LS2ZBxQW+6MRzP00nHI0bRWAJCEjHgu1v704DLLZJbnz5xJVXHwWr/wY06PoGFRwX3lga82drp21ucgkTZ+USqPJUYwjhcI2zJVgvTy5kkENer0oNhO1nN9trV0O3A2IzoK3IBz//slo+gcc9TIjtD7jaPJvQgqqrzym/Q0WReA3TevRHgUKWU3aoi67dyDjJrX2u4OOuNKu9c2gJ/yWo2/yIXvnb2mt1paodlUqbmBRePKNPBlEUXDJKtZOszZzm7vu1caKzFBftVFfXMba1aGYkgp8iXmqMcK/vPcuOdySXAfZ3CjnPLvCdr+3Crs48VRN+HqqegvMyM5wNdmU7uHsCzYE8tNaUWiGpgW/aV74Abf/wvMEvthXlTb+1w7xU2f73SlZAlOsgpciQSbxqOD33kmGdqWxfDhhQ==</Modulus><Exponent>AQAB</Exponent></RSAKeyValue>", new CultureInfo("en"));
-
-                var updaterUI = new UpdaterUI(manager, SynchronizationContext.Current);
-                updaterUI.ShowUserInterface();
-
-                // webBrowser.Address = Properties.Settings.Default.setURL;
-
-                // MessageBox.Show("Selected Preset = " + Properties.Settings.Default.selectedPreset ,"DEBUG_MODE ACTIVE");
-                // MessageBox.Show("Selected Size = " + Properties.Settings.Default.selectedSizeWidth + "x" + Properties.Settings.Default.selectedSizeHeight , "DEBUG_MODE ACTIVE");
-                // Load last used preset
-                // width x height
-                Width = Properties.Settings.Default.selectedSizeWidth;
-                Height = Properties.Settings.Default.selectedSizeHeight;
-
-                var prst = Properties.Settings.Default.selectedPreset;
-                var rz = Properties.Settings.Default.toggleResizing;
-
-                if (prst == Preset_iPhoneX) { iphonex.IsChecked = true; }
-                if (prst == Preset_Samsung9) { samsungs9.IsChecked = true; }
-                if (prst == Preset_Samsung10) { samsungs10.IsChecked = true; }
-                if (prst == Preset_iPhone11) { iPhone11.IsChecked = true; }
-                if (prst == Preset_HuaweiP30) { huaweip30.IsChecked = true; }
-                if (prst == Preset_GalaxyTab3) { galaxyTab3.IsChecked = true; }
-                if (prst == Preset_Laptop) { Laptop.IsChecked = true; }
-                if (prst == Preset_Desktop) { Desktop.IsChecked = true; }
-
-                if (rz == false)
-                {
-                    ResizeMode = ResizeMode.NoResize;
-                }
-                else
-                {
-                    ResizeMode = ResizeMode.CanResize;
+                    if (rz == false)
+                    {
+                        ResizeMode = ResizeMode.NoResize;
+                    }
+                    else
+                    {
+                        ResizeMode = ResizeMode.CanResize;
+                    }
                 }
             }
             catch (Exception ex)
@@ -519,8 +493,16 @@ namespace appdev
 
         private void open_customerdashboard_Click(object sender, RoutedEventArgs e)
         {
-            CustomerPortal cp = new CustomerPortal();
-            cp.Show();
+            try
+            {
+                CustomerPortal cp = new CustomerPortal();
+                cp.Show();
+            }
+            catch (Exception ex)
+            {
+                log.DisplayLog(ex.Message, "Exception Thrown", "ok", "error");
+                throw;
+            }
         }
     }
 }

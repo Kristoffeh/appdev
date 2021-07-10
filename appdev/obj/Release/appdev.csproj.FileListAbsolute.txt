@@ -123,3 +123,9 @@ C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\MainWindow.g.cs
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\MainWindow.baml
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\SelectAccount.g.cs
 C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\SelectAccount.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CardAdd.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CustomerPaymentOptions.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CustomerPortal.g.cs
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CardAdd.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CustomerPaymentOptions.baml
+C:\Users\kriss\Documents\GitHub\appdev\appdev\obj\Release\UI\CustomerPortal.baml

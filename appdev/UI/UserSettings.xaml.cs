@@ -32,6 +32,8 @@ namespace appdev
         {
             try
             {
+                string Subscribers_only = "[This feature is dedicated to subscribers]";
+
                 StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
 
                 if (Properties.Settings.Default.stripeSubscriptionID.Length != 0)
@@ -44,9 +46,16 @@ namespace appdev
                         cktoggleResizing.IsEnabled = false;
 
                         // Change requires restart label if users is not subscribed
-                        lblRequiresRestart.Content = "[Subscribers only]";
+                        lblRequiresRestart.Content = Subscribers_only;
                     }
+                }
+                else
+                {
+                    // User is not subscribed
+                    cktoggleResizing.IsEnabled = false;
 
+                    // Change requires restart label if users is not subscribed
+                    lblRequiresRestart.Content = "[Subscribers only]";
                 }
 
 
@@ -92,8 +101,6 @@ namespace appdev
                 // Apply user settings
                 Properties.Settings.Default.setURL = url_preview.Text;
                 Properties.Settings.Default.toggleResizing = cktoggleResizing.IsChecked.Value;
-
-
 
                 // Save settings
                 Properties.Settings.Default.Save();

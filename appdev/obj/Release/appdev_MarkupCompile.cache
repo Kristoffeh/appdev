@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\kriss\Documents\GitHub\appdev\appdev\App.xaml
-4538752185
+7713581338
 
-8-1428064572
+12303083823
 1291541695034
-UI\MainWindow.xaml;UI\CreateAccount.xaml;UI\SelectAccount.xaml;UI\UserSettings.xaml;
+UI\CardAdd.xaml;UI\CustomerPaymentOptions.xaml;UI\CustomerPortal.xaml;UI\MainWindow.xaml;UI\CreateAccount.xaml;UI\SelectAccount.xaml;UI\UserSettings.xaml;
 
 False
 

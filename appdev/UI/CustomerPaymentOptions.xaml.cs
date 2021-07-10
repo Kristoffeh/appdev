@@ -28,7 +28,6 @@ namespace appdev.UI
 
         // Show cards in ListView
         ListView listView = new ListView();
-        IDictionary<int, string> listViewOverview = new Dictionary<int, string>();
 
         public CustomerPaymentOptions()
         {
