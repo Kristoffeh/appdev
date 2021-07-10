@@ -401,3 +401,9 @@ Join https://discord.gg/mwaTWpHSXv font-weight: bold; color: #d00; font-size: 12
 [0710/135523.685:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
 [0710/135523.926:INFO:CONSOLE(8)] "page is loaded after 0.956 seconds", source: https://dhtiece9044ep.cloudfront.net/package/run_js/f7743d7926a4a9fe9b6c786b14971b4f21291668b219c05e7e7ac8600c137789/xfalse/x14 (8)
 [0710/135721.043:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled
+[0710/225314.485:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0710/225314.745:INFO:CONSOLE(8)] "page is loaded after 0.923 seconds", source: https://dhtiece9044ep.cloudfront.net/package/run_js/f7743d7926a4a9fe9b6c786b14971b4f21291668b219c05e7e7ac8600c137789/xfalse/x14 (8)
+[0710/225511.932:ERROR:gpu_init.cc(440)] Passthrough is not supported, GL is disabled
+[0710/231346.177:INFO:CONSOLE(8)] "PLEASE REFRESH: last change 5797341331 5796583170", source: https://dhtiece9044ep.cloudfront.net/package/run_js/f7743d7926a4a9fe9b6c786b14971b4f21291668b219c05e7e7ac8600c137789/xfalse/x14 (8)
+[0710/231348.508:INFO:CONSOLE(1)] "OneSignal: Using fallback ES5 Stub for backwards compatibility.", source: https://cdn.onesignal.com/sdks/OneSignalSDK.js (1)
+[0710/231348.748:INFO:CONSOLE(8)] "page is loaded after 1.451 seconds", source: https://dhtiece9044ep.cloudfront.net/package/run_js/f7743d7926a4a9fe9b6c786b14971b4f21291668b219c05e7e7ac8600c137789/xfalse/x14 (8)

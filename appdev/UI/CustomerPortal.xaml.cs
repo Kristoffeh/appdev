@@ -194,7 +194,10 @@ namespace appdev.UI
                 throw;
             }
         }
-
+        /// <summary>
+        /// Clear all local properties.
+        /// Initially just clear everything, user will have to re-register.
+        /// </summary>
         private void btnClearProperties_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult result = MessageBox.Show("Are you sure you want to clear cache and local properties? This will permanently log you out of your current account!", "Are you sure?", MessageBoxButton.OKCancel, MessageBoxImage.Exclamation);
@@ -211,28 +214,42 @@ namespace appdev.UI
             }
             
         }
-
+        /// <summary>
+        /// Cancel Subscription for user
+        /// Initially just set cancel_at_period_end to true so that it doesn't autorenew.
+        /// </summary>
         private void btnCancelSubscription_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                // API key
-                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
-
                 // Subscription object
                 var service = new SubscriptionService();
                 service.Cancel(Properties.Settings.Default.stripeSubscriptionID);
 
+                // API key
+                StripeConfiguration.ApiKey = "sk_test_sUA4LoMrFUHdtNKDr311Q3hC00g25NqDKt";
+
+                // Update subscription
+                var options = new SubscriptionUpdateOptions
+                {
+                    CancelAtPeriodEnd = true
+                };
+                var srv = new SubscriptionService();
+                var b = srv.Update(Properties.Settings.Default.stripeSubscriptionID, options);
+
+
+                TimeSpan ts = b.CurrentPeriodEnd - DateTime.Now;
+
+
+                log.DisplayLog("Your subscription is scheduled to cancel in " + string.Format("{0:0}", ts.TotalDays) + " days. You can use it until then.", "Cancel Subscription", "ok", "information");
+
                 // Remove local property
-                Properties.Settings.Default.stripeSubscriptionID = "";
+                // Properties.Settings.Default.stripeSubscriptionID = "";
 
                 // Cancellation succeeded
                 btnSubscribe.IsEnabled = true;
                 btnCancelSubscription.Visibility = Visibility.Collapsed;
                 lblSubscribedUntil.Visibility = Visibility.Hidden;
-
-
-
             }
             catch (Exception ex)
             {
